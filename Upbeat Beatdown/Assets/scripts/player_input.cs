@@ -6,7 +6,10 @@ public class player_input : MonoBehaviour {
     public float movement_speed = 100f;
     public float rotation_speed = 10f;
     public float jumpStr = 100.0f;
-    public GameObject attack;
+    public GameObject l_attack, r_attack;
+    public GameObject hit_part;
+    public Transform l_hitPos, r_hitPos;
+    public BoxCollider l_boxCol, r_boxCol;
     public GameObject right, left;
 
     private player_motor motor;
@@ -19,7 +22,7 @@ public class player_input : MonoBehaviour {
 
     // temp: change later
     public GameObject boss;
-    public MusicAnalyzer ma;
+    public beatsManager beatMan;
 
     void Start () {
         motor = gameObject.GetComponent<player_motor>();
@@ -42,16 +45,16 @@ public class player_input : MonoBehaviour {
         {
             moveHor = transform.right * h;
             moveVer = transform.forward * v;
-            force = (moveHor + moveVer).normalized * movement_speed;
+            force = (/*moveHor +*/ moveVer).normalized * movement_speed;
             rotation = new Vector3(0f, rot * rotation_speed, 0f);
         }
         else
         {
             // orbit
-            moveHor = transform.right * h;
+            //moveHor = transform.right * h;
             moveVer = transform.forward * v;
 
-            force = (moveHor + moveVer).normalized * movement_speed;
+            force = (/*moveHor +*/ moveVer).normalized * movement_speed;
             rotation = new Vector3(0f, rot * rotation_speed, 0f);
         }
 
@@ -106,27 +109,33 @@ public class player_input : MonoBehaviour {
 
             isLockedOn = !isLockedOn;
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
-            GameObject g = GameObject.Instantiate(attack, left.transform);
+            l_attack.SetActive(true);
+            l_boxCol.enabled = true;
+            /*GameObject g = GameObject.Instantiate(l_attack, left.transform);
             g.transform.localPosition = Vector3.zero;
             g.transform.localRotation = Quaternion.identity;
-            Destroy(g, 1f);
-            if (ma.CheckBeat())
-            {
-                Debug.Log("hit");
-            }
+            Destroy(g, 1f);*/
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else
         {
-            GameObject g = GameObject.Instantiate(attack, right.transform);
+            l_attack.SetActive(false);
+            l_boxCol.enabled = false;
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            r_attack.SetActive(true);
+            r_boxCol.enabled = true;
+            /*GameObject g = GameObject.Instantiate(r_attack, right.transform);
             g.transform.localPosition = Vector3.zero;
             g.transform.localRotation = Quaternion.identity;
-            Destroy(g, 1f);
-            if (ma.CheckBeat())
-            {
-                Debug.Log("hit");
-            }
+            Destroy(g, 1f);*/
+        }
+        else
+        {
+            r_attack.SetActive(false);
+            r_boxCol.enabled = false;
         }
 
         if (isLockedOn)
@@ -158,5 +167,19 @@ public class player_input : MonoBehaviour {
             weapon.transform.Translate(0, -.5f, 0);
             Debug.Log(gameObject.transform.position);
         }
+    }
+
+    public void Left_NoteHit()
+    {
+        GameObject g = Instantiate(hit_part, l_hitPos);
+        g.transform.localPosition = Vector3.zero;
+        Destroy(g,1);
+    }
+
+    public void Right_NoteHit()
+    {
+        GameObject g = Instantiate(hit_part, r_hitPos);
+        g.transform.localPosition = Vector3.zero;
+        Destroy(g, 1);
     }
 }

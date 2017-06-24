@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(AudioSource))]
 public class MusicAnalyzer : MonoBehaviour {
@@ -8,7 +9,7 @@ public class MusicAnalyzer : MonoBehaviour {
     public double bpm = 140.0F;
     public float gain = 0.5F;
     public int maxLoopBeats = 4;
-    public const float BEATOFFSET = 10000.0f;
+    public const float BEATOFFSET = 20000.0f;
     public int signatureLo = 4;
     public double nextTick = 0.0F;
     private float amp = 0.0F;
@@ -18,7 +19,7 @@ public class MusicAnalyzer : MonoBehaviour {
     private int beatCount;
     private int dataCount;
     private bool running = false;
-    private float hitOff;
+    public float hitOff;
 
     void Start()
     {
@@ -27,6 +28,8 @@ public class MusicAnalyzer : MonoBehaviour {
         sampleRate = AudioSettings.outputSampleRate;
         nextTick = startTick * sampleRate;
         running = true;
+        
+        //spawn.AddListener(SpawnGround);
     }
     void OnAudioFilterRead(float[] data, int channels)
     {
@@ -52,6 +55,7 @@ public class MusicAnalyzer : MonoBehaviour {
             while (sample + dataCount >= nextTick)
             {
                 nextTick += samplesPerTick;
+                //Debug.Log(samplesPerTick);
                 amp = 1.0F;
                 if (++beatCount > maxLoopBeats)
                 {
@@ -59,23 +63,29 @@ public class MusicAnalyzer : MonoBehaviour {
                     amp *= 2.0F;
                 }
                 // event for boss to spawn attack
+                Debug.Log("on beat");
+                
                 // add offset travel time
                 //Debug.Log("Tick: " + beatCount + "/" + maxLoopBeats);
             }
+            //canSpawn = false;
+            
             /*phase += amp * 0.3F;
             amp *= 0.993F;*/
             dataCount++;
         }
+        // num ticks from beat hit
+        hitOff = (float)(nextTick - (sample + dataCount));
     }
 
     void Update()
     {
-        hitOff = (float)(nextTick - (sample + dataCount));
-        
     }
 
     public bool CheckBeat()
     {
+        Debug.Log(hitOff);
+        // checks if hti between beat offset
         if (hitOff < BEATOFFSET || nextTick - sample + dataCount > 75000)
         {
             // send event for window of player to hit beat
