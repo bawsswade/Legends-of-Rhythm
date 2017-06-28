@@ -55,9 +55,9 @@ public class bossAttacks : MonoBehaviour {
 
     public void SpawnAOE()
     {
-        Vector3 v = new Vector3(-90.0f, 0, Random.Range(0.0f, 360.0f));
+        //Vector3 v = new Vector3(-90.0f, 0, Random.Range(0.0f, 360.0f));
         Vector3 p = new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z);
-        GameObject g = Instantiate(aoeAtk, p, Quaternion.Euler(v)) as GameObject;
-        Destroy(g, 3f);
+        GameObject g = Instantiate(aoeAtk, p, Quaternion.Euler(Vector3.zero)) as GameObject;
+        Destroy(g, 5f);
     }
 }

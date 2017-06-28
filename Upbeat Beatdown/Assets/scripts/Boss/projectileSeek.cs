@@ -5,16 +5,19 @@ using UnityEngine.Events;
 
 public class projectileSeek : MonoBehaviour {
     GameObject objToSeek;
+    GameObject boss;     // for deflection
     public int maxLifetime;
     public float maxVel;
     public float maxSpeed;
     Vector3 desVel;
+    float curDuration = 0;      // to not destroy projectile initially
+    public Material deflectedMat;
 
     bool hasLaunched = false;
     int num = 0;
 
     Rigidbody rb;
-    
+    public beatsManager beatMan;
 
 	// Use this for initialization
 	void Start () {
@@ -24,12 +27,18 @@ public class projectileSeek : MonoBehaviour {
         {
             Debug.Log("player not found");
         }
+
+        beatMan = FindObjectOfType<beatsManager>();
         //rb.AddForce(transform.rotation.eulerAngles.normalized * 2);
         //Debug.Log(transform.rotation.eulerAngles.normalized);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if (curDuration < 1)
+        {
+            curDuration += Time.deltaTime;
+        }
         if (!hasLaunched)
         {
             rb.AddForce(transform.forward * 40);
@@ -75,16 +84,37 @@ public class projectileSeek : MonoBehaviour {
         return steer;
     }
 
+    void ChangeObjToSeek()
+    {
+        objToSeek = GameObject.FindGameObjectWithTag("boss");   // cahnge obj to seek
+        gameObject.transform.LookAt(objToSeek.transform);   // change dir
+        rb.AddForce(transform.forward * 400);       // add force
+        gameObject.GetComponent<Renderer>().material = deflectedMat; // change mat
+    }
+
     private void OnTriggerEnter(Collider other)
     {
+        // player loses health
         if (other.tag == "Player")
         {
             //Debug.Log("lost health");
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
+        // player hit note
         else if (other.tag == "hit")
         {
-            //Debug.Log("note hit");
+            if (beatMan.IsOnBeat())
+            {
+                ChangeObjToSeek();
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+            //Destroy(gameObject);
+        }
+        else if (other.tag == "boss" && curDuration > 1)
+        {
             Destroy(gameObject);
         }
     }
