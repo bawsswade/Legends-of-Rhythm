@@ -2,9 +2,10 @@
 using System.Collections;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(AudioSource))]
-public class beatsManager : MonoBehaviour {
 
+//[RequireComponent(typeof(AudioSource))]
+public class beatsManager : MonoBehaviour
+{
     // song stuff
     public float bpm;
     private float secPerBeat;
@@ -13,7 +14,7 @@ public class beatsManager : MonoBehaviour {
     public AudioSource audio;
 
     // tracking player hits
-    float curBeatTime= 0;
+    float curBeatTime = 0;
     float lastBeat = 0;
     public float hitPadding;
     bool hasHitBeat = false;
@@ -31,17 +32,19 @@ public class beatsManager : MonoBehaviour {
     public UnityEvent bassAtkEvent;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         // get time in seconds to spawn
         secPerBeat = 60f / bpm;
         InvokeRepeating("SpawnBeat", secPerBeat, secPerBeat);
         //audio.Pause();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         secPerBeat = 60f / bpm;
-        
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (IsOnBeat() && !hasHitBeat)
@@ -50,46 +53,46 @@ public class beatsManager : MonoBehaviour {
                 hasHitBeat = true;
             }
         }
-        
+
     }
 
 
     void SpawnBeat()
     {
         // Boss Attack: check if song beat matches audio.time
-        if (songBeats.regNotes.Count != 0 && Mathf.Abs(songBeats.regNotes[songBeatIndex_r] - audio.time) < .1f && !hasSpawnedAttack_r)
+        if (songBeats.GetRegNotesCount() != 0 && Mathf.Abs(songBeats.GetRegNotes(songBeatIndex_r) - audio.time) < .1f && !hasSpawnedAttack_r)
         {
             //Debug.Log("spawn!");
             groundAtkEvent.Invoke();
             hasSpawnedAttack_r = true;
         }
-        if (songBeats.bassNotes.Count != 0 && Mathf.Abs(songBeats.bassNotes[songBeatIndex_b] - audio.time) < .1f && !hasSpawnedAttack_b)
+        if (songBeats.getBassNotesCount() != 0 && Mathf.Abs(songBeats.GetBassNotes(songBeatIndex_b) - audio.time) < .1f && !hasSpawnedAttack_b)
         {
             //Debug.Log("spawn!");
             bassAtkEvent.Invoke();
             hasSpawnedAttack_b = true;
         }
-        if (songBeats.vocalNotes.Count != 0 && Mathf.Abs(songBeats.vocalNotes[songBeatIndex_v] - audio.time) < .1f && !hasSpawnedAttack_v)
+        /*if (songBeats.vocalNotes.Count != 0 && Mathf.Abs(songBeats.vocalNotes[songBeatIndex_v] - audio.time) < .1f && !hasSpawnedAttack_v)
         {
             // replace ground attack with different kind later
             groundAtkEvent.Invoke();
             hasSpawnedAttack_v = true;
-        }
-        
+        }*/
+
         //Debug.Log(audio.time);
         // Boss Attack:increase index of song beats to hit
-        if (songBeats.regNotes.Count != 0 && songBeats.regNotes[songBeatIndex_r] < audio.time && songBeatIndex_r < songBeats.regNotes.Count- 1)
+        if (songBeats.GetRegNotesCount() != 0 && songBeats.GetRegNotes(songBeatIndex_r) < audio.time && songBeatIndex_r < songBeats.GetRegNotesCount() - 1)
         {
             songBeatIndex_r++;
         }
-        if (songBeats.bassNotes.Count != 0 && songBeats.bassNotes[songBeatIndex_b] < audio.time && songBeatIndex_b < songBeats.bassNotes.Count - 1)
+        if (songBeats.getBassNotesCount() != 0 && songBeats.GetBassNotes(songBeatIndex_b) < audio.time && songBeatIndex_b < songBeats.getBassNotesCount() - 1)
         {
             songBeatIndex_b++;
         }
-        if (songBeats.vocalNotes.Count != 0 && songBeats.vocalNotes[songBeatIndex_v] < audio.time && songBeatIndex_v < songBeats.vocalNotes.Count - 1)
+        /*if (songBeats.vocalNotes.Count != 0 && songBeats.vocalNotes[songBeatIndex_v] < audio.time && songBeatIndex_v < songBeats.vocalNotes.Count - 1)
         {
             songBeatIndex_v++;
-        }
+        }*/
         // enable spawning attacks again
         hasSpawnedAttack_r = false;
         hasSpawnedAttack_b = false;
@@ -97,14 +100,14 @@ public class beatsManager : MonoBehaviour {
 
         // Beat Tracker: instantiate beat ring prefab
         GameObject newBeat = Instantiate(p_beat, player.transform) as GameObject;
-        newBeat.transform.localPosition = new Vector3(0,0,0);
+        newBeat.transform.localPosition = new Vector3(0, 0, 0);
         Destroy(newBeat, 5f);
 
         // Player: update current beat for player
         hasHitBeat = false;
         lastBeat = curBeatTime;
         curBeatTime = Time.fixedTime;
-        
+
 
     }
 
@@ -112,15 +115,15 @@ public class beatsManager : MonoBehaviour {
     public bool IsOnBeat()
     {
         float nextBeat = curBeatTime + curBeatTime - lastBeat;
-        
+
         // after beat || before beat
-        if(Time.fixedTime - curBeatTime < hitPadding )
+        if (Time.fixedTime - curBeatTime < hitPadding)
         {
             //Debug.Log(Time.fixedTime - curBeatTime); 
             //Debug.Log("after");
             return true;
         }
-        else if(nextBeat - Time.fixedTime < hitPadding) 
+        else if (nextBeat - Time.fixedTime < hitPadding)
         {
             //Debug.Log(nextBeat - Time.fixedTime);
             //Debug.Log("before");

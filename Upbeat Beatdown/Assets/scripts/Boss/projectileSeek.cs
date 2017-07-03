@@ -15,20 +15,29 @@ public class projectileSeek : MonoBehaviour {
 
     bool hasLaunched = false;
     int num = 0;
+    float startY;
+    public bool isDeflected;
 
     Rigidbody rb;
-    public beatsManager beatMan;
+    BeatManagerMediator beatMan;
 
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
-        objToSeek = GameObject.FindGameObjectWithTag("Player");
+        if (!isDeflected)
+        {
+            objToSeek = GameObject.FindGameObjectWithTag("Player");
+        }
+        else
+        {
+            objToSeek = GameObject.FindGameObjectWithTag("boss");
+        }
         if(objToSeek == null)
         {
             Debug.Log("player not found");
         }
-
-        beatMan = FindObjectOfType<beatsManager>();
+        startY = transform.position.y;
+        beatMan = FindObjectOfType<BeatManagerMediator>();
         //rb.AddForce(transform.rotation.eulerAngles.normalized * 2);
         //Debug.Log(transform.rotation.eulerAngles.normalized);
 	}
@@ -54,7 +63,7 @@ public class projectileSeek : MonoBehaviour {
         }
         //Destroy(gameObject, maxLifetime);
 
-
+        transform.position = new Vector3(transform.position.x, startY, transform.position.z);
     }
 
     Vector3 Seek(Vector3 target)
@@ -88,32 +97,48 @@ public class projectileSeek : MonoBehaviour {
     {
         objToSeek = GameObject.FindGameObjectWithTag("boss");   // cahnge obj to seek
         gameObject.transform.LookAt(objToSeek.transform);   // change dir
-        rb.AddForce(transform.forward * 400);       // add force
+        rb.AddForce(transform.forward * 800);       // add force
+        hasLaunched = false;
+        num = 0;
         gameObject.GetComponent<Renderer>().material = deflectedMat; // change mat
+        curDuration = 0;
+        isDeflected = true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        // player loses health
-        if (other.tag == "Player")
+        if (!isDeflected)
         {
-            //Debug.Log("lost health");
-            //Destroy(gameObject);
-        }
-        // player hit note
-        else if (other.tag == "hit")
-        {
-            if (beatMan.IsOnBeat())
+            // player loses health
+            if (other.tag == "Player")
             {
-                ChangeObjToSeek();
-            }
-            else
-            {
+                objToSeek.GetComponent<PlayerInputMediator>().MissedNote(objToSeek.transform);
+                //Debug.Log(objToSeek.name);
                 Destroy(gameObject);
             }
-            //Destroy(gameObject);
+            // player hit note
+            else if (other.tag == "hit" /*&& !objToSeek.GetComponent<PlayerInputView>().noteHit*/)
+            {
+                /*if (beatMan.CheckIsOnBeat())
+                {
+                    ChangeObjToSeek();
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }*/
+                //objToSeek.GetComponent<PlayerInputMediator>().MissedNote(objToSeek.transform);
+                Destroy(gameObject);
+            }
         }
-        else if (other.tag == "boss" && curDuration > 1)
+        else if(other.tag == "boss" && isDeflected)
+        {
+            Destroy(gameObject);
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "boss" && isDeflected)
         {
             Destroy(gameObject);
         }

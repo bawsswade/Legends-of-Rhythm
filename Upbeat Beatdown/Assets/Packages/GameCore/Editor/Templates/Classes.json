@@ -1,0 +1,84 @@
+{
+  "Folders": [
+    { "Path": "Game" },
+    { "Path": "Game/Scripts" },
+    { "Path": "Game/Scripts/Mediators" },
+    { "Path": "Game/Scripts/Models" },
+    { "Path": "Game/Scripts/States" },
+    { "Path": "Game/Scripts/Views" }
+  ],
+  "Classes": [
+    {
+      "Name": "GameData",
+      "Extends": "MonoBehaviour",
+      "Path": "/Game/Scripts/Models/GameData.cs",
+      "Using": [
+        "using UnityEngine;",
+        "using System.Collections;"
+      ],
+      "Properties": [],
+      "Methods": []
+    },
+    {
+      "Name": "GameManager",
+      "Extends": "StrangePackage",
+      "Path": "/Game/Scripts/GameManager.cs",
+      "Using": [
+        "using UnityEngine;",
+        "using System.Collections;",
+        "using strange.extensions.command.api;",
+        "using strange.extensions.injector.api;",
+        "using strange.extensions.mediation.api;"
+      ],
+      "Properties": [],
+      "Methods": [
+        {
+          "Name": "MapBindings",
+          "IsOverride": true,
+          "ReturnType": "void",
+          "Access": "public",
+          "Arguments": [
+            {
+              "Name": "commandBinder",
+              "Type": "ICommandBinder"
+            },
+            {
+              "Name": "injectionBinder",
+              "Type": "ICrossContextInjectionBinder"
+            },
+            {
+              "Name": "mediationBinder",
+              "Type": "IMediationBinder"
+            }
+          ],
+          "Content": [
+            "injectionBinder.Bind<GameManager>().ToValue(this).ToSingleton();",
+            "injectionBinder.Bind<GameData>().ToValue(this.GameData);"
+          ]
+        },
+        {
+          "Name": "PostBindings",
+          "IsOverride": true,
+          "ReturnType": "void",
+          "Access": "public",
+          "Arguments": [
+            {
+              "Name": "commandBinder",
+              "Type": "ICommandBinder"
+            },
+            {
+              "Name": "injectionBinder",
+              "Type": "ICrossContextInjectionBinder"
+            },
+            {
+              "Name": "mediationBinder",
+              "Type": "IMediationBinder"
+            }
+          ],
+          "Content": []
+        }
+
+      ]
+    }
+  ]
+}
