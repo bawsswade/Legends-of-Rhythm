@@ -25,6 +25,9 @@ public class PlayerInputView : View {
     public GameObject specialAtk;
     public GameObject spAtkIndicator;
 
-    public bool isDashing = false;
+    public bool isDashing;
     public GameObject dashParticles;
+
+    public float health;
+    public GameObject healthBar;
 }

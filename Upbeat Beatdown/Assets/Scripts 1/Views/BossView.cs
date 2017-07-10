@@ -6,6 +6,9 @@ using strange.extensions.mediation.impl;
 
 public class BossView : View {
     public GameObject groundAtk;
-    public GameObject airAtk;
+    public GameObject instantAOE;
     public GameObject aoeAtk;
+
+    public float health;
+    public GameObject healthDisplay;
 }

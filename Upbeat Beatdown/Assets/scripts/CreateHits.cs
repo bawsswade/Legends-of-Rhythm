@@ -19,9 +19,9 @@ public class CreateHits : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             beatMan = GameObject.FindObjectOfType<BeatManagerMediator>();
-            SOtoWriteTo.AddBassNote(beatMan.SaveBeat());
+            //SOtoWriteTo.AddBassNote(beatMan.SaveBeat());
             //SOtoWriteTo.AddMelodyNote(beatMan.SaveBeat());
-            //SOtoWriteTo.vocalNotes.Add(beatMan.SaveBeat());
+            SOtoWriteTo.vocalNotes.Add(beatMan.SaveBeat());
             
         }
 	}

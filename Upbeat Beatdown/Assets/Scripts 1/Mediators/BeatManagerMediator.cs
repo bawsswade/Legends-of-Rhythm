@@ -12,6 +12,7 @@ public class BeatManagerMediator : Mediator {
     // boss attack signals
     [Inject] public OnBassAttackSignal BassAtkSignal { get; set; }
     [Inject] public OnMelodyAttackSignal MelodyAtkSignal { get; set; }
+    [Inject] public OnInstantAttackSignal InstantAtkSignal { get; set; }
     // set on beat bool for player
     //[Inject] public OnBassBeat BassBeatSignal { get; set; }
     //[Inject] public OnMelodyBeat MelodyBeatSignal { get; set; }
@@ -35,8 +36,10 @@ public class BeatManagerMediator : Mediator {
     // spawn notes to hit
     int songMelodyIndex = 0;
     int songBassIndex = 0;
+    int songVocalIndex = 0;
     public List<float> melodyNotes = new List<float>();
     public List<float> bassNotes = new List<float>();
+    public List<float> vocalNotes = new List<float>();
 
     public override void OnRegister()
     {
@@ -74,7 +77,7 @@ public class BeatManagerMediator : Mediator {
     {
         //Debug.Log(Mathf.Abs(melodyNotes[songMelodyIndex] - View.audio.time));
         // spawn notes to match metrenome
-        if (melodyNotes.Count != 0 && Mathf.Abs(melodyNotes[songMelodyIndex] - View.audio.time) < .1f)      // check if to spawn this beat or next beat
+        /*if (melodyNotes.Count != 0 && Mathf.Abs(melodyNotes[songMelodyIndex] - View.audio.time) < .1f)      // check if to spawn this beat or next beat
         {
             // spawn melody beat
             GameObject b = Instantiate(View.melodyNote, View.player.transform) as GameObject;
@@ -87,7 +90,7 @@ public class BeatManagerMediator : Mediator {
             GameObject b = Instantiate(View.bassNote, View.player.transform) as GameObject;
             b.transform.localPosition = new Vector3(0, -1, 0);
             Destroy(b, 5f);
-        }
+        }*/
 
 
         // Boss Attack: check if song beat matches audio.time
@@ -105,12 +108,13 @@ public class BeatManagerMediator : Mediator {
             BassAtkSignal.Dispatch();
             hasSpawnedAttack_b = true;
         }
-        /*if (View.songBeats.vocalNotes.Count != 0 && Mathf.Abs(View.songBeats.vocalNotes[songBeatIndex_v] - View.audio.time) < .1f && !hasSpawnedAttack_v)
+        if (View.songBeats.vocalNotes.Count != 0 && Mathf.Abs(View.songBeats.vocalNotes[songBeatIndex_v] - View.audio.time) < .1f && !hasSpawnedAttack_v)
         {
             // replace ground attack with different kind later
             //groundAtkEvent.Invoke();     // call singal
+            InstantAtkSignal.Dispatch();
             hasSpawnedAttack_v = true;
-        }*/
+        }
 
         // Boss Attack:increase index of song beats to hit
         if (View.songBeats.regNotes.Count != 0 && View.songBeats.regNotes[songBeatIndex_r] < View.audio.time && songBeatIndex_r < View.songBeats.regNotes.Count - 1)
@@ -121,10 +125,10 @@ public class BeatManagerMediator : Mediator {
         {
             songBeatIndex_b++;
         }
-        /*if (View.songBeats.vocalNotes.Count != 0 && View.songBeats.vocalNotes[songBeatIndex_v] < View.audio.time && songBeatIndex_v < View.songBeats.vocalNotes.Count - 1)
+        if (View.songBeats.vocalNotes.Count != 0 && View.songBeats.vocalNotes[songBeatIndex_v] < View.audio.time && songBeatIndex_v < View.songBeats.vocalNotes.Count - 1)
         {
             songBeatIndex_v++;
-        }*/
+        }
 
         // increase for note hits
         if (melodyNotes.Count != 0 && melodyNotes[songMelodyIndex] < View.audio.time && songMelodyIndex < melodyNotes.Count - 1 )
@@ -134,6 +138,10 @@ public class BeatManagerMediator : Mediator {
         if (bassNotes.Count != 0 && bassNotes[songBassIndex] < View.audio.time && songBassIndex < bassNotes.Count - 1)
         {
             songBassIndex++;
+        }
+        if (vocalNotes.Count != 0 && vocalNotes[songVocalIndex] < View.audio.time && songVocalIndex < vocalNotes.Count - 1)
+        {
+            songVocalIndex++;
         }
 
         // enable spawning attacks again
@@ -145,12 +153,18 @@ public class BeatManagerMediator : Mediator {
         GameObject newBeat = Instantiate(View.p_beat, View.player.transform) as GameObject;
         newBeat.transform.localPosition = new Vector3(0, -1, 0);
         Destroy(newBeat, 5f);
+        // eaxact beat
+        GameObject b = Instantiate(View.beatExact, View.player.transform) as GameObject;
+        b.transform.localPosition = new Vector3(0, -1.2f, 0);
+        Destroy(b, .5f);
 
         // Player: update current beat for player
         hasHitBeat = false;
         lastBeat = curBeatTime;
         curBeatTime = Time.fixedTime;
-        
+
+        //update editor window for current beat
+        NotesEditor.UpdateCurrentBeat();
     }
 
     // Player: check for attacking on beat

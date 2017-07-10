@@ -133,14 +133,14 @@ public class projectileSeek : MonoBehaviour {
         }
         else if(other.tag == "boss" && isDeflected)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == "boss" && isDeflected)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 }

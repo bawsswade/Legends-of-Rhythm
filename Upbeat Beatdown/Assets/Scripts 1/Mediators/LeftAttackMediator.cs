@@ -9,6 +9,7 @@ public class LeftAttackMediator : Mediator {
     [Inject] public OnLeftHit LeftHitSignal { get; set; }
     [Inject] public OnChargeSpecial ChargeSpecialSignal { get; set; }
     [Inject] public OnLeftResetHit ResetLeftSignal { get; set; }
+    [Inject] public OnGainHealth GainHealthSignal { get; set; }
 
     public bool hasHit = false;
 
@@ -31,7 +32,9 @@ public class LeftAttackMediator : Mediator {
             LeftHitSignal.Dispatch();
             //hitNoteEvent.Invoke();
             hasHit = true;
-            
+
+            // increase health if can
+            GainHealthSignal.Dispatch(1);
         }
         else
         {

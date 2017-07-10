@@ -5,11 +5,11 @@ using System;
 
 public class PlayerInputMediator : Mediator {
     public float movement_speed = 100f;
-    public float dashForce = 500f;
+    public float dashForce = 600f;
     public float rotation_speed = 10f;
     public float jumpStr = 100.0f;
     public float dashPadding = .4f;     // how close both axis need to be to dash
-    public float dashDuration = .13f;
+    public float dashDuration = .15f;
     float minDashValue = .3f;           // min value for analog stick 
 
     public float attackDuration = .2f;
@@ -27,6 +27,8 @@ public class PlayerInputMediator : Mediator {
     float r_attackTimer = 0;
     bool r_isAttacking;
 
+    public float startHealth;
+
     private player_motor motor;
 
     private bool isLockedOn = false;
@@ -40,9 +42,12 @@ public class PlayerInputMediator : Mediator {
     [Inject] public OnChargeSpecial ChargeSpecialSignal { get; set; }
     [Inject] public OnRightResetHit ResetRightSignal { get; set; }
     [Inject] public OnLeftResetHit ResetLeftSignal { get; set; }
+    [Inject] public OnGainHealth GainHealthSignal { get; set; }
     //spawn hit particles
     [Inject] public OnLeftHit LeftHitSignal { get; set; }
     [Inject] public OnRightHit RightHitSignal { get; set; }
+    //boss stuff
+    [Inject] public OnBossTakeDamage DamageBossSignal { get; set; }
 
     public override void OnRegister()
     {
@@ -53,6 +58,7 @@ public class PlayerInputMediator : Mediator {
         LeftHitSignal.AddListener(Left_NoteHit);
         RightHitSignal.AddListener(Right_NoteHit);
         ChargeSpecialSignal.AddListener(IncreaseCharge);
+        GainHealthSignal.AddListener(GainHealth);
 	}
     
     void Start()
@@ -61,6 +67,10 @@ public class PlayerInputMediator : Mediator {
 
         specialStartSize = View.spAtkIndicator.transform.localScale.x;
         View.spAtkIndicator.transform.localScale = Vector3.zero;
+
+        startHealth = View.health;
+
+        View.isDashing = false;
     }
 
     void Update()
@@ -92,17 +102,25 @@ public class PlayerInputMediator : Mediator {
         // dashing
         if (Ins.InuptManager.GetControls(INPUTTYPE.Dash) && !View.isDashing)                         // how close left and right atk value have to be
         {
-            // CHANGE TO DASH TOWARDS NOTES
+            // CHANGE TO DASH TOWARDS NOTES maybe
             moveHor = transform.right * ((Ins.InuptManager.GetAxis(INPUTTYPE.MoveX) + Ins.InuptManager.GetAxis(INPUTTYPE.LookX)) / 2);
             moveVer = transform.forward * ((Ins.InuptManager.GetAxis(INPUTTYPE.MoveY) + Ins.InuptManager.GetAxis(INPUTTYPE.LookY)) / 2);
-            force = (moveHor + moveVer).normalized * dashForce;
+            if (View.beatMan.GetComponent<BeatManagerMediator>().CheckIsOnBeat())
+            {
+                force = (moveHor + moveVer).normalized * dashForce;
+                GameObject g = Instantiate(View.dashParticles, transform);
+                g.transform.rotation = Quaternion.Euler(-force);
+                Destroy(g, 1);
+            }
+            else
+            {
+                force = (moveHor + moveVer).normalized * (dashForce/1.2f);
+            }
             View.isDashing = true;
             dashTimer = 0;
             View.noteHit = View.beatMan.GetComponent<BeatManagerMediator>().CheckIsOnBeat();  // only check on melody
 
-            GameObject g = Instantiate(View.dashParticles, transform);
-            //g.transform.rotation = Quaternion.Euler(-force);
-            Destroy(g,.2f);
+            
         }
 
         motor.setRot(rotation);
@@ -111,12 +129,12 @@ public class PlayerInputMediator : Mediator {
         if (View.isDashing)
         {
             dashTimer += Time.deltaTime;
+            View.isDashing = true;
         }
-        if ((dashTimer < dashDuration) && View.isDashing)
+        if ((dashTimer < dashDuration) )
         {
             motor.setForce(force);
-
-
+            
         }
         else
         {
@@ -153,12 +171,12 @@ public class PlayerInputMediator : Mediator {
 
 
         // left attack
-        if (Ins.InuptManager.GetAxis(INPUTTYPE.AtkLeft) != 1 && !l_isAttacking) // set timer
+        if (Ins.InuptManager.GetAxis(INPUTTYPE.AtkLeft) != 1 && !l_isAttacking && !View.isDashing) // set timer
         {
             l_attackTimer = 0;
             l_isAttacking = true;
             View.noteHit = View.beatMan.GetComponent<BeatManagerMediator>().CheckIsOnBeat();     // only checks on melody for now
-            if (!View.noteHit)
+            if (!View.noteHit && !View.isDashing)
             {
                 //Debug.Log("l_missed");
                 MissedNote(View.l_hitPos);
@@ -187,12 +205,12 @@ public class PlayerInputMediator : Mediator {
         }
 
         // right attack
-        if (Ins.InuptManager.GetAxis(INPUTTYPE.AtkRight) != 1 && !r_isAttacking) // set timer
+        if (Ins.InuptManager.GetAxis(INPUTTYPE.AtkRight) != 1 && !r_isAttacking &&!View.isDashing) // set timer
         {
             r_attackTimer = 0;
             r_isAttacking = true;
             View.noteHit = View.beatMan.GetComponent<BeatManagerMediator>().CheckIsOnBeat();     // only checks  for melody
-            if (!View.noteHit)
+            if (!View.noteHit && !View.isDashing)
             {
                 //Debug.Log("missed");
                 MissedNote(View.r_hitPos);
@@ -234,6 +252,7 @@ public class PlayerInputMediator : Mediator {
         if (canSpecialAtk && Ins.InuptManager.GetControls(INPUTTYPE.SpecialAtk))
         {
             View.specialAtk.SetActive(true);
+            
             Invoke("ResetSpecial", 2);
         }
         else if(!canSpecialAtk)
@@ -286,6 +305,9 @@ public class PlayerInputMediator : Mediator {
         g.transform.localPosition = new Vector3(0, -1.2f, 0);
         g.transform.localRotation = Quaternion.Euler(90, 0, 0);
         Destroy(g, 1);
+
+        // lose health
+        LoseHealth(1);
     }
 
     private void IncreaseCharge()
@@ -306,9 +328,40 @@ public class PlayerInputMediator : Mediator {
 
     void ResetSpecial()
     {
+        DamageBossSignal.Dispatch(25);
         canSpecialAtk = false;
         specialAtkCharge = 0;
         View.specialAtkText.text = specialAtkCharge.ToString();
         View.spAtkIndicator.transform.localScale = Vector3.zero;
+    }
+
+    void LoseHealth(int num)
+    {
+        if (View.health > 0 && !View.isDashing)
+        {
+            View.health -= num;
+            View.healthBar.transform.localScale = new Vector3(View.health / startHealth, 1, 1);
+        }
+        else
+        {
+            //Application.LoadLevel("refactored scene");
+        }
+    }
+
+    public void GainHealth(int num)
+    {
+        if (View.health < startHealth)
+        {
+            View.health += num;
+            View.healthBar.transform.localScale = new Vector3(View.health / startHealth, 1, 1);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "note")
+        {
+            //LoseHealth(1);
+        }
     }
 }

@@ -9,6 +9,7 @@ public class BeatManagerView : View {
     public float bpm;
     
     public GameObject p_beat;
+    public GameObject beatExact;
     public GameObject melodyNote;
     public GameObject bassNote;
 

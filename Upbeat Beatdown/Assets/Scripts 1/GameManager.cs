@@ -29,9 +29,12 @@ public partial class GameManager : StrangePackage
         commandBinder.Bind<OnChargeSpecial>();
         commandBinder.Bind<OnLeftResetHit>();
         commandBinder.Bind<OnRightResetHit>();
+        commandBinder.Bind<OnGainHealth>();
         // boss signals
         commandBinder.Bind<OnBassAttackSignal>();
         commandBinder.Bind<OnMelodyAttackSignal>();
+        commandBinder.Bind<OnBossTakeDamage>();
+        commandBinder.Bind<OnInstantAttackSignal>();
         //beatzzz signal
         commandBinder.Bind<OnLeftHit>();
         commandBinder.Bind<OnRightHit>();
