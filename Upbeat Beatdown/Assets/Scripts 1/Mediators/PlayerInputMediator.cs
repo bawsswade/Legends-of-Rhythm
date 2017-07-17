@@ -33,6 +33,8 @@ public class PlayerInputMediator : Mediator {
 
     private bool isLockedOn = false;
 
+    private AudioSource audio;
+
 
     [Inject] public PlayerInputView View { get; set; }
     // player stuffs
@@ -71,6 +73,8 @@ public class PlayerInputMediator : Mediator {
         startHealth = View.health;
 
         View.isDashing = false;
+
+        audio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -109,7 +113,8 @@ public class PlayerInputMediator : Mediator {
             {
                 force = (moveHor + moveVer).normalized * dashForce;
                 GameObject g = Instantiate(View.dashParticles, transform);
-                g.transform.rotation = Quaternion.Euler(-force);
+                g.transform.rotation = Quaternion.LookRotation(-force);
+                //g.transform.rotation = Quaternion.Euler(0,-force.y,0);
                 Destroy(g, 1);
             }
             else
@@ -273,6 +278,7 @@ public class PlayerInputMediator : Mediator {
             GameObject d = Instantiate(View.deflectProjectile, View.l_hitPos.parent);
             d.transform.localPosition = Vector3.zero;
             d.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            //audio.Play(); // sounds bad right now
         }
     }
 
@@ -288,6 +294,7 @@ public class PlayerInputMediator : Mediator {
             GameObject d = Instantiate(View.deflectProjectile, View.r_hitPos.parent);
             d.transform.localPosition = Vector3.zero;
             d.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            //audio.Play();     // sounds bad right now
         }
     }
 

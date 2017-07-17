@@ -21,7 +21,7 @@ public class CreateHits : MonoBehaviour {
             beatMan = GameObject.FindObjectOfType<BeatManagerMediator>();
             //SOtoWriteTo.AddBassNote(beatMan.SaveBeat());
             //SOtoWriteTo.AddMelodyNote(beatMan.SaveBeat());
-            SOtoWriteTo.vocalNotes.Add(beatMan.SaveBeat());
+            SOtoWriteTo.vocalNotes.Add(beatMan.SaveBeat());         // instant attacks
             
         }
 	}

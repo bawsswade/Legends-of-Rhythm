@@ -8,13 +8,11 @@ public class BeatManagerView : View {
     // song stuff
     public float bpm;
     
-    public GameObject p_beat;
-    public GameObject beatExact;
-    public GameObject melodyNote;
-    public GameObject bassNote;
+    public GameObject p_beat;       // particles for metronome
 
-    public GameObject player;
-    public AudioSource audio;
+    public GameObject beatExact;    // metronome immediate particles
+    public GameObject melodyNote;   // metrenome melody notes
+    public GameObject bassNote;     // metrenome bass notes
 
-    public SongSO songBeats;
+    public SongSO NoteData;
 }

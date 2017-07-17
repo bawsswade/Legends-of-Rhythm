@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AOE_Attack : MonoBehaviour {
+public class LineAttack : MonoBehaviour {
 
     public GameObject atkIndicator;
     BeatManagerView beatMan;
@@ -12,36 +12,31 @@ public class AOE_Attack : MonoBehaviour {
     float secPerBeat;
     public float placementPadding = 5f;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         beatMan = GameObject.FindObjectOfType<BeatManagerView>();
         secPerBeat = 60 / beatMan.bpm;
         secPerBeat *= numIndicatorBeats;
 
         Invoke("Burst", secPerBeat);
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         if (atkIndicator.transform.localScale.x < 1)
         {
-            atkIndicator.transform.localScale += new Vector3(Time.deltaTime/ secPerBeat, 1, Time.deltaTime / secPerBeat);
+            atkIndicator.transform.localScale += new Vector3(Time.deltaTime / secPerBeat, Time.deltaTime / secPerBeat, Time.deltaTime / secPerBeat);
         }
-	}
+    }
 
     void Burst()
     {
         atkIndicator.transform.localScale = new Vector3(1, 1, 1);
         particles.SetActive(true);
         atkIndicator.GetComponent<SpriteRenderer>().enabled = false;
-        if (GetComponent<SphereCollider>() != null)
-        {
-            GetComponent<SphereCollider>().enabled = true;
-        }
-        else
-        {
-            GetComponent<BoxCollider>().enabled = true;
-        }
+        GetComponent<SphereCollider>().enabled = true;
         Invoke("Deactivate", .7f);
     }
 
@@ -54,16 +49,7 @@ public class AOE_Attack : MonoBehaviour {
     {
         if (other.tag == "hit")
         {
-            // if circle
-            if (GetComponent<SphereCollider>())
-            {
-                GetComponent<SphereCollider>().enabled = false;
-            }
-            // line
-            else
-            {
-                GetComponent<BoxCollider>().enabled = false;
-            }
+            GetComponent<SphereCollider>().enabled = false;
         }
     }
 }

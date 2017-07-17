@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AOE_Attack : MonoBehaviour {
+public class AOE_Line : MonoBehaviour {
 
     public GameObject atkIndicator;
     BeatManagerView beatMan;
-    public GameObject particles;
+    public GameObject rays;
+    public GameObject wave1;
+    public GameObject wave2;
     public int numIndicatorBeats;
 
     float secPerBeat;
@@ -32,7 +34,9 @@ public class AOE_Attack : MonoBehaviour {
     void Burst()
     {
         atkIndicator.transform.localScale = new Vector3(1, 1, 1);
-        particles.SetActive(true);
+        rays.SetActive(true);
+        wave1.SetActive(true);
+        wave2.SetActive(true);
         atkIndicator.GetComponent<SpriteRenderer>().enabled = false;
         if (GetComponent<SphereCollider>() != null)
         {
