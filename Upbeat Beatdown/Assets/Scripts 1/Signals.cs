@@ -11,6 +11,7 @@ public class OnChargeSpecial : Signal { }
 public class OnLeftResetHit : Signal { }
 public class OnRightResetHit : Signal { }
 public class OnGainHealth : Signal<int> { }
+public class OnChangeNoteType : Signal<NOTETYPE> { }
 
 // enamy attacks
 public class OnBassAttackSignal : Signal { }

@@ -10,9 +10,13 @@ public class BeatManagerView : View {
     
     public GameObject p_beat;       // particles for metronome
 
-    public GameObject beatExact;    // metronome immediate particles
-    public GameObject melodyNote;   // metrenome melody notes
-    public GameObject bassNote;     // metrenome bass notes
+    public GameObject snareNote;    // metronome immediate particles
+    public GameObject melodyNote;   // metrenome melody attack
+    public GameObject bassNote;   
+
+    public GameObject allMelodyNotes;
+    public GameObject allBassNotes;
+    public GameObject allSnareNotes;
 
     public SongSO NoteData;
 }

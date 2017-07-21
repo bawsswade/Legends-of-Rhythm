@@ -27,7 +27,8 @@ public class AOE_Line : MonoBehaviour {
 	void Update () {
         if (atkIndicator.transform.localScale.x < 1)
         {
-            atkIndicator.transform.localScale += new Vector3(Time.deltaTime/ secPerBeat, 1, Time.deltaTime / secPerBeat);
+            atkIndicator.transform.localScale += new Vector3(Time.deltaTime/ secPerBeat, 1, 1);
+            //transform.localScale = new Vector3(20,2, 1);
         }
 	}
 

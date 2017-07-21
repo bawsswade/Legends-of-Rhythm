@@ -30,6 +30,7 @@ public partial class GameManager : StrangePackage
         commandBinder.Bind<OnLeftResetHit>();
         commandBinder.Bind<OnRightResetHit>();
         commandBinder.Bind<OnGainHealth>();
+        commandBinder.Bind<OnChangeNoteType>();
         // boss signals
         commandBinder.Bind<OnBassAttackSignal>();
         commandBinder.Bind<OnMelodyAttackSignal>();

@@ -21,6 +21,7 @@ public class BeatManagerMediator : Mediator {
     [Inject] public OnBassAttackSignal BassAtkSignal { get; set; }
     [Inject] public OnMelodyAttackSignal MelodyAtkSignal { get; set; }
     [Inject] public OnInstantAttackSignal InstantAtkSignal { get; set; }
+    [Inject] public OnChangeNoteType NoteTypeSignal { get; set; }
     // set on beat bool for player
     //[Inject] public OnBassBeat BassBeatSignal { get; set; }
     //[Inject] public OnMelodyBeat MelodyBeatSignal { get; set; }
@@ -55,7 +56,7 @@ public class BeatManagerMediator : Mediator {
 
     public override void OnRegister()
     {
-
+        NoteTypeSignal.AddListener(UpdateNoteType);
 	}
 
     // Use this for initialization
@@ -92,38 +93,40 @@ public class BeatManagerMediator : Mediator {
     {
         //Debug.Log(Mathf.Abs(melodyNotes[songMelodyIndex] - View.audio.time));
         // spawn notes to match metrenome
-        if (melodyNotes.Count != 0 && Mathf.Abs(melodyNotes[songMelodyIndex] - audio.time) < .1f && currentNoteType == NOTETYPE.MELODY)      // check if to spawn this beat or next beat
+        if(SpawnNoteType(melodyNotes, songMelodyIndex))
         {
             // spawn melody beat
             GameObject b = Instantiate(View.melodyNote, player.transform) as GameObject;
+            b.transform.parent = View.allMelodyNotes.transform;
             b.transform.localPosition = new Vector3(0, -1, 0);
             Destroy(b, 5f);
         }
-        if (bassNotes.Count != 0 && Mathf.Abs(bassNotes[songBassIndex] - audio.time) < .1f && currentNoteType == NOTETYPE.BASS)
+        if(SpawnNoteType(bassNotes, songBassIndex))
         {
             // spawn melody beat
             GameObject b = Instantiate(View.bassNote, player.transform) as GameObject;
+            b.transform.parent = View.allBassNotes.transform;
             b.transform.localPosition = new Vector3(0, -1, 0);
             Destroy(b, 5f);
         }
 
 
         // Boss Attack: check if song beat matches audio.time
-        if (View.NoteData.regNotes.Count != 0 && Mathf.Abs(View.NoteData.regNotes[songBeatIndex_r] - audio.time) < .1f && !hasSpawnedAttack_r)
+        if (View.NoteData.regNotes.Count != 0 && Mathf.Abs(View.NoteData.regNotes[songBeatIndex_r] - audio.time) < .1f && !hasSpawnedAttack_r && currentNoteType!= NOTETYPE.MELODY)
         {
             //Debug.Log("spawn!");
             //groundAtkEvent.Invoke();    // call singal
             MelodyAtkSignal.Dispatch();
             hasSpawnedAttack_r = true;
         }
-        if (View.NoteData.bassNotes.Count != 0 && Mathf.Abs(View.NoteData.bassNotes[songBeatIndex_b] - audio.time) < .1f && !hasSpawnedAttack_b)
+        if (View.NoteData.bassNotes.Count != 0 && Mathf.Abs(View.NoteData.bassNotes[songBeatIndex_b] - audio.time) < .1f && !hasSpawnedAttack_b && currentNoteType != NOTETYPE.BASS)
         {
             //Debug.Log("spawn!");
             //bassAtkEvent.Invoke();   // call singal
             BassAtkSignal.Dispatch();
             hasSpawnedAttack_b = true;
         }
-        if (View.NoteData.vocalNotes.Count != 0 && Mathf.Abs(View.NoteData.vocalNotes[songBeatIndex_v] - audio.time) < .1f && !hasSpawnedAttack_v)
+        if (View.NoteData.vocalNotes.Count != 0 && Mathf.Abs(View.NoteData.vocalNotes[songBeatIndex_v] - audio.time) < .1f && !hasSpawnedAttack_v && currentNoteType != NOTETYPE.SNARE)
         {
             // replace ground attack with different kind later
             //groundAtkEvent.Invoke();     // call singal
@@ -137,7 +140,11 @@ public class BeatManagerMediator : Mediator {
         songBeatIndex_v = CheckToIncrement(View.NoteData.vocalNotes, songBeatIndex_v);
 
         // increase for note hits for metrenome
-        if (melodyNotes.Count != 0 && melodyNotes[songMelodyIndex] < audio.time && songMelodyIndex < melodyNotes.Count - 1 )
+        songMelodyIndex = UpdateMetrenomeVars(melodyNotes, songMelodyIndex);
+        songBassIndex = UpdateMetrenomeVars(bassNotes, songBassIndex);
+        songVocalIndex =  UpdateMetrenomeVars(vocalNotes, songVocalIndex);
+
+        /* (melodyNotes.Count != 0 && melodyNotes[songMelodyIndex] < audio.time && songMelodyIndex < melodyNotes.Count - 1 )
         {
             songMelodyIndex++;
         }
@@ -148,7 +155,7 @@ public class BeatManagerMediator : Mediator {
         if (vocalNotes.Count != 0 && vocalNotes[songVocalIndex] < audio.time && songVocalIndex < vocalNotes.Count - 1)
         {
             songVocalIndex++;
-        }
+        }*/
 
 
         UpdateBeatVars();
@@ -165,11 +172,12 @@ public class BeatManagerMediator : Mediator {
     {
         float nextBeat = curBeatTime + curBeatTime - lastBeat;
 
-        // after beat || before beat
-        if (Time.fixedTime - curBeatTime < hitPadding)
+        // after beat
+        if (Time.fixedTime - curBeatTime < hitPadding)      // also check to cureNoteType
         {
             return true;
         }
+        // before beat
         else if (nextBeat - Time.fixedTime < hitPadding)
         {
             return true;
@@ -180,6 +188,50 @@ public class BeatManagerMediator : Mediator {
             return false;
             //MelodyBeatSignal.Dispatch(false);
         }
+    }
+
+    public bool SpawnNoteType(List<float> noteList, int index)
+    {
+        if (noteList.Count != 0 && Mathf.Abs(noteList[index] - audio.time) < .1f)      // disable all others except this note typs
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public bool CheckHitBeat()
+    {
+        if (currentNoteType == NOTETYPE.MELODY)
+        {
+            if(Mathf.Abs(View.NoteData.regNotes[songBeatIndex_r] - audio.time) < .1f)
+            {
+                return true;
+            }
+        }
+        else if (currentNoteType == NOTETYPE.BASS)
+        {
+            if(Mathf.Abs(View.NoteData.bassNotes[songBeatIndex_r] - audio.time) < .1f)
+            {
+                return true;
+            }
+        }
+        else if (currentNoteType == NOTETYPE.SNARE)
+        {
+            if(Mathf.Abs(View.NoteData.vocalNotes[songBeatIndex_r] - audio.time) < .1f)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int UpdateMetrenomeVars(List<float> noteList, int index)
+    {
+        if (noteList.Count != 0 && noteList[index] < audio.time && index < noteList.Count - 1)
+        {
+            return index + 1;
+        }
+        return index;
     }
 
     private void UpdateBeatVars()
@@ -233,11 +285,16 @@ public class BeatManagerMediator : Mediator {
             Destroy(newBeat, 5f);
 
             // eaxact beat
-            GameObject b = Instantiate(View.beatExact, player.transform) as GameObject;
+            /*GameObject b = Instantiate(View.snareNote, player.transform) as GameObject;
             b.transform.localPosition = new Vector3(0, -1.2f, 0);
-            Destroy(b, .5f);
+            Destroy(b, .5f);*/
         }
         // to sawn every other
         //isMainBeat = !isMainBeat;
+    }
+
+    private void UpdateNoteType(NOTETYPE nt)
+    {
+        currentNoteType = nt;
     }
 }

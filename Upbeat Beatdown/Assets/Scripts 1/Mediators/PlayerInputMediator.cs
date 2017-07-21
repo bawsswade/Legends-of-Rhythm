@@ -35,6 +35,8 @@ public class PlayerInputMediator : Mediator {
 
     private AudioSource audio;
 
+    public NOTETYPE curNoteType = NOTETYPE.MELODY;
+
 
     [Inject] public PlayerInputView View { get; set; }
     // player stuffs
@@ -45,6 +47,7 @@ public class PlayerInputMediator : Mediator {
     [Inject] public OnRightResetHit ResetRightSignal { get; set; }
     [Inject] public OnLeftResetHit ResetLeftSignal { get; set; }
     [Inject] public OnGainHealth GainHealthSignal { get; set; }
+    [Inject] public OnChangeNoteType NoteTypeSignal { get; set; }
     //spawn hit particles
     [Inject] public OnLeftHit LeftHitSignal { get; set; }
     [Inject] public OnRightHit RightHitSignal { get; set; }
@@ -186,6 +189,10 @@ public class PlayerInputMediator : Mediator {
                 //Debug.Log("l_missed");
                 MissedNote(View.l_hitPos);
             }
+            else if(View.beatMan.GetComponent<BeatManagerMediator>().CheckHitBeat())
+            {
+                Attack();
+            }
         }
         else if (!View.isDashing)
         {
@@ -219,6 +226,10 @@ public class PlayerInputMediator : Mediator {
             {
                 //Debug.Log("missed");
                 MissedNote(View.r_hitPos);
+            }
+            else if (View.beatMan.GetComponent<BeatManagerMediator>().CheckHitBeat())
+            {
+                Attack();
             }
         }
         else if (!View.isDashing)
@@ -264,6 +275,15 @@ public class PlayerInputMediator : Mediator {
         {
             View.specialAtk.SetActive(false);
         }
+
+        if (Ins.InuptManager.GetControls(INPUTTYPE.SwitchLeft))
+        {
+            NoteTypeSignal.Dispatch(NOTETYPE.BASS);
+        }
+        else if(Ins.InuptManager.GetControls(INPUTTYPE.SwitchRight))
+        {
+            NoteTypeSignal.Dispatch(NOTETYPE.MELODY);
+        }
     }
 
     public void Left_NoteHit()
@@ -275,9 +295,7 @@ public class PlayerInputMediator : Mediator {
 
         if (!View.isDashing)
         {
-            GameObject d = Instantiate(View.deflectProjectile, View.l_hitPos.parent);
-            d.transform.localPosition = Vector3.zero;
-            d.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            Attack();
             //audio.Play(); // sounds bad right now
         }
     }
@@ -291,11 +309,16 @@ public class PlayerInputMediator : Mediator {
 
         if (!View.isDashing)
         {
-            GameObject d = Instantiate(View.deflectProjectile, View.r_hitPos.parent);
-            d.transform.localPosition = Vector3.zero;
-            d.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            Attack();
             //audio.Play();     // sounds bad right now
         }
+    }
+
+    private void Attack()
+    {
+        GameObject d = Instantiate(View.deflectProjectile, View.r_hitPos.parent);
+        d.transform.localPosition = Vector3.zero;
+        d.transform.localRotation = Quaternion.Euler(Vector3.zero);
     }
 
     public void MissedNote(Transform parent)

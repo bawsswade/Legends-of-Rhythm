@@ -27,6 +27,8 @@ public enum INPUTTYPE
     Back,
     Escape,
     Skip,
+    SwitchRight,
+    SwitchLeft,
 
     Dash,
     AtkRight,
@@ -109,7 +111,9 @@ namespace Ins
                 { INPUTTYPE.Skip, ()=> CheckFirstFrame(() => Input.GetButtonDown("PS4_Button_Square"), INPUTTYPE.Skip)},
                 { INPUTTYPE.LockOn, () => Input.GetButtonDown("PS4_X")},
                 { INPUTTYPE.SpecialAtk, () => MultAxisToBool(() => Input.GetAxis("PS4_L_Trigger"), () => Input.GetAxis("PS4_R_Trigger"))},    // positive
-                { INPUTTYPE.Dash, ()=> CheckDash(()=>Input.GetAxis("PS4_L_Analog_X"), ()=>Input.GetAxis("PS4_L_Analog_Y"), ()=>Input.GetAxis("PS4_R_Analog_X"), ()=>Input.GetAxis("PS4_R_Analog_Y"))}
+                { INPUTTYPE.Dash, ()=> CheckDash(()=>Input.GetAxis("PS4_L_Analog_X"), ()=>Input.GetAxis("PS4_L_Analog_Y"), ()=>Input.GetAxis("PS4_R_Analog_X"), ()=>Input.GetAxis("PS4_R_Analog_Y"))},
+                { INPUTTYPE.SwitchLeft, () => Input.GetButtonDown("PS4_L1")},
+                { INPUTTYPE.SwitchRight, () => Input.GetButtonDown("PS4_R1")}
             };
         private static Dictionary<INPUTTYPE, System.Func<float>> PS4Axis =
             new Dictionary<INPUTTYPE, System.Func<float>>
