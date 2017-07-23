@@ -31,7 +31,7 @@ public class PlayerInputMediator : Mediator {
 
     private player_motor motor;
 
-    private bool isLockedOn = false;
+    private bool isLockedOn = true;
 
     private AudioSource audio;
 
@@ -152,17 +152,17 @@ public class PlayerInputMediator : Mediator {
         }
         if ((dashTimer < dashDuration + .2))
         {
-            View.l_attack.SetActive(true);
+            /*View.l_attack.SetActive(true);
             View.l_boxCol.enabled = true;
             View.r_attack.SetActive(true);
-            View.r_boxCol.enabled = true;
+            View.r_boxCol.enabled = true;*/
         }
         else
         {
-            View.l_attack.SetActive(false);
+            /*View.l_attack.SetActive(false);
             View.l_boxCol.enabled = false;
             View.r_attack.SetActive(false);
-            View.r_boxCol.enabled = false;
+            View.r_boxCol.enabled = false;*/
             hasCharged = false;
         }
 
@@ -171,11 +171,6 @@ public class PlayerInputMediator : Mediator {
             View.isDashing = false;
         }
 
-        // lock on
-        if (Input.GetKeyDown(KeyCode.Return) || Ins.InuptManager.GetControls(INPUTTYPE.LockOn))
-        {
-            isLockedOn = !isLockedOn;
-        }
 
 
         // left attack
@@ -186,8 +181,7 @@ public class PlayerInputMediator : Mediator {
             View.noteHit = View.beatMan.GetComponent<BeatManagerMediator>().CheckIsOnBeat();     // only checks on melody for now
             if (!View.noteHit && !View.isDashing)
             {
-                //Debug.Log("l_missed");
-                MissedNote(View.l_hitPos);
+                //MissedNote(View.l_hitPos);
             }
             else if(View.beatMan.GetComponent<BeatManagerMediator>().CheckHitBeat())
             {
@@ -196,8 +190,8 @@ public class PlayerInputMediator : Mediator {
         }
         else if (!View.isDashing)
         {
-            View.l_attack.SetActive(false);
-            View.l_boxCol.enabled = false;
+            /*View.l_attack.SetActive(false);
+            View.l_boxCol.enabled = false;*/
         }
         if (l_isAttacking)
         {
@@ -205,8 +199,8 @@ public class PlayerInputMediator : Mediator {
             // activate hitbox
             if (l_attackTimer < attackDuration)
             {
-                View.l_attack.SetActive(true);
-                View.l_boxCol.enabled = true;
+                //View.l_attack.SetActive(true);
+                //View.l_boxCol.enabled = true;
             }
         }
         // reset when button released
@@ -224,8 +218,7 @@ public class PlayerInputMediator : Mediator {
             View.noteHit = View.beatMan.GetComponent<BeatManagerMediator>().CheckIsOnBeat();     // only checks  for melody
             if (!View.noteHit && !View.isDashing)
             {
-                //Debug.Log("missed");
-                MissedNote(View.r_hitPos);
+                //MissedNote(View.r_hitPos);
             }
             else if (View.beatMan.GetComponent<BeatManagerMediator>().CheckHitBeat())
             {
@@ -234,8 +227,8 @@ public class PlayerInputMediator : Mediator {
         }
         else if (!View.isDashing)
         {
-            View.r_attack.SetActive(false);
-            View.r_boxCol.enabled = false;
+            //View.r_attack.SetActive(false);
+            //View.r_boxCol.enabled = false;
         }
         if (r_isAttacking)
         {
@@ -243,8 +236,8 @@ public class PlayerInputMediator : Mediator {
             // activate hitbox
             if (r_attackTimer < attackDuration)
             {
-                View.r_attack.SetActive(true);
-                View.r_boxCol.enabled = true;
+                //View.r_attack.SetActive(true);
+                //View.r_boxCol.enabled = true;
             }
         }
         // reset when button released
@@ -288,10 +281,10 @@ public class PlayerInputMediator : Mediator {
 
     public void Left_NoteHit()
     {
-        GameObject g = Instantiate(View.hit_part, View.l_hitPos.parent);
+        /*GameObject g = Instantiate(View.hit_part, View.l_hitPos.parent);
         g.transform.localPosition = new Vector3(0,-1.2f,0);
         g.transform.localRotation = Quaternion.Euler( 90,0,0);
-        Destroy(g, 1);
+        Destroy(g, 1);*/
 
         if (!View.isDashing)
         {
@@ -302,10 +295,10 @@ public class PlayerInputMediator : Mediator {
 
     public void Right_NoteHit()
     {
-        GameObject g = Instantiate(View.hit_part, View.r_hitPos.parent);
+        /*GameObject g = Instantiate(View.hit_part, View.r_hitPos.parent);
         g.transform.localPosition = new Vector3(0, -1.2f, 0);
         g.transform.localRotation = Quaternion.Euler(90,0,0);
-        Destroy(g, 1);
+        Destroy(g, 1);*/
 
         if (!View.isDashing)
         {
@@ -316,7 +309,7 @@ public class PlayerInputMediator : Mediator {
 
     private void Attack()
     {
-        GameObject d = Instantiate(View.deflectProjectile, View.r_hitPos.parent);
+        GameObject d = Instantiate(View.deflectProjectile, transform.parent);
         d.transform.localPosition = Vector3.zero;
         d.transform.localRotation = Quaternion.Euler(Vector3.zero);
     }

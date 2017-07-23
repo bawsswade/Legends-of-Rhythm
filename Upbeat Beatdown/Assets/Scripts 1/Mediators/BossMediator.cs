@@ -6,29 +6,59 @@ using System;
 public class BossMediator : Mediator {
 
     [Inject] public BossView View { get; set; }
-    [Inject] public OnBassAttackSignal BassAtkSignal { get; set; }
-    [Inject] public OnMelodyAttackSignal MelodyAtkSignal { get; set; }
+    [Inject] public OnChangeNoteType NoteChangeSignal { get; set; }
     [Inject] public OnBossTakeDamage BossDamageSignal { get; set; }
-    [Inject] public OnInstantAttackSignal InstantAtkSignal { get; set; }
+    //[Inject] public OnBassAttackSignal BassAtkSignal { get; set; }
+    //[Inject] public OnMelodyAttackSignal MelodyAtkSignal { get; set; }
+    //[Inject] public OnInstantAttackSignal InstantAtkSignal { get; set; }
 
     private float startHealth;
     private GameObject player;
 
+    private NOTETYPE curNoteType;
     private int count = 0;
+    private bool melodyHasSpawned = false;
+    private bool bassHasSpawned = false;
+    private bool snareHasSpawned = false;
 
-	public override void OnRegister()
+    public override void OnRegister()
     {
         BossDamageSignal.AddListener(TakeDamage);
-        BassAtkSignal.AddListener(SpawnAOE);
-        MelodyAtkSignal.AddListener(SpawnGround);
-        InstantAtkSignal.AddListener(SpawnInstantLine);
+        NoteChangeSignal.AddListener(ChangeNoteType);
+        //BassAtkSignal.AddListener(SpawnAOE);
+        //MelodyAtkSignal.AddListener(SpawnGround);
+        //InstantAtkSignal.AddListener(SpawnInstantLine);
     }
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-
         startHealth = View.health;
+
+        // beat increments
+        float secPerBeat = 60f / Beatz.beatsManager.bpm;
+        InvokeRepeating("AttackCheck", secPerBeat, secPerBeat);
+    }
+
+    private void AttackCheck()
+    {
+        if (Beatz.beatsManager.IsOnBeat(NOTETYPE.MELODY) && curNoteType != NOTETYPE.MELODY && !melodyHasSpawned)
+        {
+            SpawnGround();
+            melodyHasSpawned = true;
+        }
+        if (Beatz.beatsManager.IsOnBeat(NOTETYPE.BASS) && curNoteType != NOTETYPE.BASS && !bassHasSpawned)
+        {
+            SpawnAOE();
+            bassHasSpawned = true;
+        }
+        if (Beatz.beatsManager.IsOnBeat(NOTETYPE.SNARE) && curNoteType != NOTETYPE.SNARE && !snareHasSpawned)
+        {
+            SpawnInstantLine();
+            snareHasSpawned = true;
+        }
+
+        ResetVars();
     }
 
     public void Spawn4Ground()
@@ -118,5 +148,17 @@ public class BossMediator : Mediator {
             TakeDamage(1);
             Destroy(other.gameObject);
         }
+    }
+
+    private void ChangeNoteType(NOTETYPE n)
+    {
+        curNoteType = n;
+    }
+
+    private void ResetVars()
+    {
+        melodyHasSpawned = false;
+        bassHasSpawned = false;
+        snareHasSpawned = false;
     }
 }

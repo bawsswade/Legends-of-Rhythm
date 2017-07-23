@@ -6,7 +6,7 @@ using UnityEngine;
 public class LeftAttack : MonoBehaviour {
 
     public UnityEvent hitNoteEvent = new UnityEvent();
-    public beatsManager beatMan;
+    //public beatsManager beatMan;
     public player_input player;
     bool hasHit = false;        // to instantiate hit particles only once
 

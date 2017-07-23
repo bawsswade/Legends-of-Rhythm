@@ -4,12 +4,7 @@ using strange.extensions.mediation.impl;
 using System;
 using System.Collections.Generic;
 
-public enum NOTETYPE
-{
-    BASS,
-    MELODY,
-    SNARE
-}
+
 
 
 [RequireComponent(typeof(AudioSource))]
@@ -225,9 +220,20 @@ public class BeatManagerMediator : Mediator {
         return false;
     }
 
+    // for metrenome
     public int UpdateMetrenomeVars(List<float> noteList, int index)
     {
         if (noteList.Count != 0 && noteList[index] < audio.time && index < noteList.Count - 1)
+        {
+            return index + 1;
+        }
+        return index;
+    }
+
+    // for boss
+    private int CheckToIncrement(List<float> dataList, int index)
+    {
+        if (dataList.Count != 0 && dataList[index] < audio.time && index < dataList.Count - 1)
         {
             return index + 1;
         }
@@ -265,16 +271,7 @@ public class BeatManagerMediator : Mediator {
         return 0;
     }
 
-    // returns index
-    private int CheckToIncrement(List<float> dataList, int index)
-    {
-        if (dataList.Count != 0 && dataList[index] < audio.time && index < dataList.Count - 1)
-        {
-            return index+1;
-        }
-        return index;
-    }
-
+    
     private void SpawnBeatTracker()
     {
         // Beat Tracker: instantiate beat ring prefab  (every other) 

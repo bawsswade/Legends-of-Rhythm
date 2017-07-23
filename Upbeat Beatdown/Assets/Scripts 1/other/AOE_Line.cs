@@ -5,19 +5,19 @@ using UnityEngine;
 public class AOE_Line : MonoBehaviour {
 
     public GameObject atkIndicator;
-    BeatManagerView beatMan;
+    //BeatManagerView beatMan;
     public GameObject rays;
     public GameObject wave1;
     public GameObject wave2;
     public int numIndicatorBeats;
 
     float secPerBeat;
-    public float placementPadding = 5f;
+    public float placementPadding = 8f;
 
 	// Use this for initialization
 	void Start () {
-        beatMan = GameObject.FindObjectOfType<BeatManagerView>();
-        secPerBeat = 60 / beatMan.bpm;
+        //beatMan = GameObject.FindObjectOfType<BeatManagerView>();
+        secPerBeat = 60 / Beatz.beatsManager.bpm;
         secPerBeat *= numIndicatorBeats;
 
         Invoke("Burst", secPerBeat);

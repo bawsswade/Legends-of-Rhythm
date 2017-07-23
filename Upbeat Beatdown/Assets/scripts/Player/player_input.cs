@@ -38,7 +38,7 @@ public class player_input : MonoBehaviour {
 
     // temp: change later
     public GameObject boss;
-    public beatsManager beatMan;
+    //public beatsManager beatMan;
 
     void Start () {
         motor = gameObject.GetComponent<player_motor>();
@@ -85,7 +85,7 @@ public class player_input : MonoBehaviour {
             force = (moveHor +moveVer).normalized * dashForce;
             isDashing = true;
             dashTimer = 0;
-            noteHit = beatMan.IsOnBeat();
+            //noteHit = beatMan.IsOnBeat();
             
         }
         //Debug.Log(Ins.InuptManager.GetAxis(INPUTTYPE.AtkLeft) + " / " + Ins.InuptManager.GetAxis(INPUTTYPE.AtkRight));
@@ -184,7 +184,7 @@ public class player_input : MonoBehaviour {
         {
             l_attackTimer = 0;
             l_isAttacking = true;
-            noteHit = beatMan.IsOnBeat();
+            //noteHit = beatMan.IsOnBeat();
         }
         else if (!isDashing )
         {
@@ -212,7 +212,7 @@ public class player_input : MonoBehaviour {
         {
             r_attackTimer = 0;
             r_isAttacking = true;
-            noteHit = beatMan.IsOnBeat();
+            //noteHit = beatMan.IsOnBeat();
         }
         else if(!isDashing)
         {

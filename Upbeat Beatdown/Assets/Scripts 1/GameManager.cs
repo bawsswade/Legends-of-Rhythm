@@ -16,11 +16,13 @@ public partial class GameManager : StrangePackage
         injectionBinder.Bind<GameData>().ToValue(this.GameData);
 
         //player
+        mediationBinder.Bind<PlayerMovementView>().To<PlayerMovementMediator>();
+        mediationBinder.Bind<PlayerActionsView>().To<PlayerActionsMediator>();
+        mediationBinder.Bind<BeatIndicatorView>().To<BeatIndicatorMediator>();
+        mediationBinder.Bind<CameraView>().To<CameraMediator>();
         mediationBinder.Bind<PlayerInputView>().To<PlayerInputMediator>();
         mediationBinder.Bind<BeatManagerView>().To<BeatManagerMediator>();
         mediationBinder.Bind<BossView>().To<BossMediator>();
-        mediationBinder.Bind<LeftAttackView>().To<LeftAttackMediator>();
-        mediationBinder.Bind<RightAttackView>().To<RightAttackMediator>();
 
         // player signals
         commandBinder.Bind<OnLeftAttackSignal>();

@@ -9,11 +9,11 @@ public class PlayerInputView : View {
     public GameObject boss;
 
     // change to use events
-    public GameObject l_attack, r_attack;   // enable mesh renerer for visual animation
+    //public GameObject l_attack, r_attack;   // enable mesh renerer for visual animation
     public GameObject hit_part;
     public GameObject missParticles;
-    public Transform l_hitPos, r_hitPos;
-    public Collider l_boxCol, r_boxCol;  // enable collider
+    //public Transform l_hitPos, r_hitPos;
+    //public Collider l_boxCol, r_boxCol;  // enable collider
 
     public bool noteHit;            // used by right and left attack scripts
     public GameObject beatMan;

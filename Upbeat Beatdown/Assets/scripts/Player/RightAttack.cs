@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class RightAttack : MonoBehaviour {
 
     public UnityEvent hitNoteEvent = new UnityEvent();
-    public beatsManager beatMan;
+    //public beatsManager beatMan;
     public player_input player;
     bool hasHit = false;
 

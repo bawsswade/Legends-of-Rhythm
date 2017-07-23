@@ -35,7 +35,9 @@ public enum INPUTTYPE
     AtkLeft,
     SpecialAtk,
     Shield,
-    LockOn
+    LockOn,
+    Attack,
+    Block
 }
 namespace Ins
 {
@@ -109,7 +111,8 @@ namespace Ins
                 { INPUTTYPE.Down, () =>CheckFirstFrame(() => Input.GetAxis("PS4_Dpad_Y"), INPUTTYPE.Down, false)},
                 { INPUTTYPE.Escape, ()=> Input.GetButtonDown("PS4_Options")},
                 { INPUTTYPE.Skip, ()=> CheckFirstFrame(() => Input.GetButtonDown("PS4_Button_Square"), INPUTTYPE.Skip)},
-                { INPUTTYPE.LockOn, () => Input.GetButtonDown("PS4_X")},
+                { INPUTTYPE.Attack, () => Input.GetButtonDown("PS4_X")},
+                { INPUTTYPE.Block, () => Input.GetButtonDown("PS4_Square")},
                 { INPUTTYPE.SpecialAtk, () => MultAxisToBool(() => Input.GetAxis("PS4_L_Trigger"), () => Input.GetAxis("PS4_R_Trigger"))},    // positive
                 { INPUTTYPE.Dash, ()=> CheckDash(()=>Input.GetAxis("PS4_L_Analog_X"), ()=>Input.GetAxis("PS4_L_Analog_Y"), ()=>Input.GetAxis("PS4_R_Analog_X"), ()=>Input.GetAxis("PS4_R_Analog_Y"))},
                 { INPUTTYPE.SwitchLeft, () => Input.GetButtonDown("PS4_L1")},

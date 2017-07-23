@@ -88,7 +88,7 @@ public class projectileSeek : MonoBehaviour {
             steer.Normalize();
             steer *= maxForce;
         }
-        transform.rotation = Quaternion.LookRotation(rb.velocity);
+        //transform.rotation = Quaternion.LookRotation(rb.velocity);
 
         return steer;
     }
@@ -112,7 +112,7 @@ public class projectileSeek : MonoBehaviour {
             // player loses health
             if (other.tag == "Player")
             {
-                objToSeek.GetComponent<PlayerInputMediator>().MissedNote(objToSeek.transform);
+                //objToSeek.GetComponent<PlayerInputMediator>().MissedNote(objToSeek.transform);
                 //Debug.Log(objToSeek.name);
                 Destroy(gameObject);
             }

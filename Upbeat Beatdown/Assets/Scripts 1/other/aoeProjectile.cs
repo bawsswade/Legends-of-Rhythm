@@ -8,7 +8,7 @@ public class aoeProjectile : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            other.gameObject.GetComponent<PlayerInputMediator>().MissedNote(other.transform);
+            //other.gameObject.GetComponent<PlayerInputMediator>().MissedNote(other.transform);
             Destroy(gameObject);
         }
         else if (other.tag == "hit")

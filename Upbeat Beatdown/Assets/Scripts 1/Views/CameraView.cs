@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using strange.extensions.mediation.impl;
 
-public class LeftAttackView : View {
+public class CameraView : View {
     public GameObject player;
+    public GameObject lockedTarget;
+    public float cameraDist;
 }
