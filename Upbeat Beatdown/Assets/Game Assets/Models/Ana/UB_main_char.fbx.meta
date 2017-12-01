@@ -1,0 +1,585 @@
+fileFormatVersion: 2
+guid: 4ae42991b5d5b9e49a3bb7f163bfb920
+timeCreated: 1504740129
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Boot_Left
+    100002: Boot_Right
+    100004: guitar
+    100006: Hair
+    100008: Hand_Left1
+    100010: joint1
+    100012: joint2
+    100014: joint3
+    100016: joint4
+    100018: joint5
+    100020: joint6
+    100022: joint7
+    100024: joint8
+    100026: l_ankle
+    100028: l_ball
+    100030: l_clavicle
+    100032: l_elbow
+    100034: l_forearm
+    100036: l_knee
+    100038: l_shoulder
+    100040: l_thigh
+    100042: l_toe
+    100044: l_wrist
+    100046: meshTrans
+    100048: pCone1
+    100050: pCone2
+    100052: pCone6
+    100054: pCone7
+    100056: polySurface1131
+    100058: polySurface1136
+    100060: polySurface1139
+    100062: polySurface1145
+    100064: pTorus1
+    100066: pTorus2
+    100068: r_ankle
+    100070: r_ball
+    100072: r_clavicle
+    100074: r_elbow
+    100076: r_forearm
+    100078: r_knee
+    100080: r_shoulder
+    100082: r_thigh
+    100084: r_toe
+    100086: r_wrist
+    100088: root
+    100090: skeleton_GRP
+    100092: Skin
+    100094: Skin1
+    100096: Skin2
+    100098: spin4
+    100100: spine1
+    100102: spine2
+    100104: spine3
+    100106: spine5
+    100108: spine6
+    100110: spine7
+    100112: transform15
+    100114: transform21
+    100116: transform22
+    100118: transform23
+    100120: transform24
+    100122: transform27
+    100124: transform28
+    100126: transform29
+    100128: transform30
+    100130: transform31
+    100132: transform32
+    100134: transform33
+    100136: transform34
+    100138: transform35
+    100140: transform36
+    100142: //RootNode
+    100144: UB_Mesh
+    100146: UB_Trans
+    400000: Boot_Left
+    400002: Boot_Right
+    400004: guitar
+    400006: Hair
+    400008: Hand_Left1
+    400010: joint1
+    400012: joint2
+    400014: joint3
+    400016: joint4
+    400018: joint5
+    400020: joint6
+    400022: joint7
+    400024: joint8
+    400026: l_ankle
+    400028: l_ball
+    400030: l_clavicle
+    400032: l_elbow
+    400034: l_forearm
+    400036: l_knee
+    400038: l_shoulder
+    400040: l_thigh
+    400042: l_toe
+    400044: l_wrist
+    400046: meshTrans
+    400048: pCone1
+    400050: pCone2
+    400052: pCone6
+    400054: pCone7
+    400056: polySurface1131
+    400058: polySurface1136
+    400060: polySurface1139
+    400062: polySurface1145
+    400064: pTorus1
+    400066: pTorus2
+    400068: r_ankle
+    400070: r_ball
+    400072: r_clavicle
+    400074: r_elbow
+    400076: r_forearm
+    400078: r_knee
+    400080: r_shoulder
+    400082: r_thigh
+    400084: r_toe
+    400086: r_wrist
+    400088: root
+    400090: skeleton_GRP
+    400092: Skin
+    400094: Skin1
+    400096: Skin2
+    400098: spin4
+    400100: spine1
+    400102: spine2
+    400104: spine3
+    400106: spine5
+    400108: spine6
+    400110: spine7
+    400112: transform15
+    400114: transform21
+    400116: transform22
+    400118: transform23
+    400120: transform24
+    400122: transform27
+    400124: transform28
+    400126: transform29
+    400128: transform30
+    400130: transform31
+    400132: transform32
+    400134: transform33
+    400136: transform34
+    400138: transform35
+    400140: transform36
+    400142: //RootNode
+    400144: UB_Mesh
+    400146: UB_Trans
+    2300000: guitar
+    3300000: guitar
+    4300000: UB_Mesh
+    4300002: guitar
+    7400000: AnaIdle
+    7400002: Strum
+    9500000: //RootNode
+    13700000: UB_Mesh
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: AnaIdle
+      takeName: Take 001
+      firstFrame: 5
+      lastFrame: 44
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: guitar
+        weight: 1
+      - path: skeleton_GRP
+        weight: 1
+      - path: skeleton_GRP/root
+        weight: 1
+      - path: skeleton_GRP/root/l_thigh
+        weight: 1
+      - path: skeleton_GRP/root/l_thigh/l_knee
+        weight: 1
+      - path: skeleton_GRP/root/l_thigh/l_knee/l_ankle
+        weight: 1
+      - path: skeleton_GRP/root/l_thigh/l_knee/l_ankle/l_ball
+        weight: 1
+      - path: skeleton_GRP/root/l_thigh/l_knee/l_ankle/l_ball/l_toe
+        weight: 1
+      - path: skeleton_GRP/root/r_thigh
+        weight: 1
+      - path: skeleton_GRP/root/r_thigh/r_knee
+        weight: 1
+      - path: skeleton_GRP/root/r_thigh/r_knee/r_ankle
+        weight: 1
+      - path: skeleton_GRP/root/r_thigh/r_knee/r_ankle/r_ball
+        weight: 1
+      - path: skeleton_GRP/root/r_thigh/r_knee/r_ankle/r_ball/r_toe
+        weight: 1
+      - path: skeleton_GRP/root/spine1
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/l_clavicle
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/l_clavicle/l_shoulder
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/l_clavicle/l_shoulder/l_elbow
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/l_clavicle/l_shoulder/l_elbow/l_forearm
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/l_clavicle/l_shoulder/l_elbow/l_forearm/l_wrist
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/r_clavicle
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/r_clavicle/r_shoulder
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/r_clavicle/r_shoulder/r_elbow
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/r_clavicle/r_shoulder/r_elbow/r_forearm
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/r_clavicle/r_shoulder/r_elbow/r_forearm/r_wrist
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/spine7
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/spine7/joint1
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/spine7/joint1/joint2
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/spine7/joint1/joint3
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/spine7/joint1/joint3/joint4
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/spine7/joint1/joint3/joint4/joint5
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/spine7/joint1/joint3/joint4/joint5/joint6
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/spine7/joint1/joint3/joint4/joint5/joint6/joint7
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/spine7/joint1/joint3/joint4/joint5/joint6/joint7/joint8
+        weight: 1
+      - path: UB_Mesh
+        weight: 1
+      - path: UB_Trans
+        weight: 1
+      - path: UB_Trans/Boot_Left
+        weight: 1
+      - path: UB_Trans/Boot_Left/transform29
+        weight: 1
+      - path: UB_Trans/Boot_Right
+        weight: 1
+      - path: UB_Trans/Boot_Right/transform35
+        weight: 1
+      - path: UB_Trans/Hair
+        weight: 1
+      - path: UB_Trans/Hair/pCone1
+        weight: 1
+      - path: UB_Trans/Hair/pCone1/transform28
+        weight: 1
+      - path: UB_Trans/Hair/pCone2
+        weight: 1
+      - path: UB_Trans/Hair/pCone2/transform30
+        weight: 1
+      - path: UB_Trans/Hair/pCone6
+        weight: 1
+      - path: UB_Trans/Hair/pCone6/transform27
+        weight: 1
+      - path: UB_Trans/Hair/pCone7
+        weight: 1
+      - path: UB_Trans/Hair/pCone7/transform31
+        weight: 1
+      - path: UB_Trans/Hair/pTorus1
+        weight: 1
+      - path: UB_Trans/Hair/pTorus1/transform32
+        weight: 1
+      - path: UB_Trans/Hair/pTorus2
+        weight: 1
+      - path: UB_Trans/Hair/pTorus2/transform33
+        weight: 1
+      - path: UB_Trans/Hand_Left1
+        weight: 1
+      - path: UB_Trans/Hand_Left1/transform36
+        weight: 1
+      - path: UB_Trans/meshTrans
+        weight: 1
+      - path: UB_Trans/meshTrans/polySurface1131
+        weight: 1
+      - path: UB_Trans/meshTrans/polySurface1131/polySurface1136
+        weight: 1
+      - path: UB_Trans/meshTrans/polySurface1131/polySurface1136/polySurface1139
+        weight: 1
+      - path: UB_Trans/meshTrans/polySurface1131/polySurface1136/polySurface1139/transform22
+        weight: 1
+      - path: UB_Trans/meshTrans/polySurface1131/polySurface1136/polySurface1145
+        weight: 1
+      - path: UB_Trans/meshTrans/polySurface1131/polySurface1136/polySurface1145/transform21
+        weight: 1
+      - path: UB_Trans/meshTrans/polySurface1131/polySurface1136/transform15
+        weight: 1
+      - path: UB_Trans/Skin
+        weight: 1
+      - path: UB_Trans/Skin/transform24
+        weight: 1
+      - path: UB_Trans/Skin1
+        weight: 1
+      - path: UB_Trans/Skin1/transform23
+        weight: 1
+      - path: UB_Trans/Skin2
+        weight: 1
+      - path: UB_Trans/Skin2/transform34
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 5
+    - serializedVersion: 16
+      name: Strum
+      takeName: Take 001
+      firstFrame: 45
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: guitar
+        weight: 1
+      - path: skeleton_GRP
+        weight: 1
+      - path: skeleton_GRP/root
+        weight: 1
+      - path: skeleton_GRP/root/l_thigh
+        weight: 1
+      - path: skeleton_GRP/root/l_thigh/l_knee
+        weight: 1
+      - path: skeleton_GRP/root/l_thigh/l_knee/l_ankle
+        weight: 1
+      - path: skeleton_GRP/root/l_thigh/l_knee/l_ankle/l_ball
+        weight: 1
+      - path: skeleton_GRP/root/l_thigh/l_knee/l_ankle/l_ball/l_toe
+        weight: 1
+      - path: skeleton_GRP/root/r_thigh
+        weight: 1
+      - path: skeleton_GRP/root/r_thigh/r_knee
+        weight: 1
+      - path: skeleton_GRP/root/r_thigh/r_knee/r_ankle
+        weight: 1
+      - path: skeleton_GRP/root/r_thigh/r_knee/r_ankle/r_ball
+        weight: 1
+      - path: skeleton_GRP/root/r_thigh/r_knee/r_ankle/r_ball/r_toe
+        weight: 1
+      - path: skeleton_GRP/root/spine1
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/l_clavicle
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/l_clavicle/l_shoulder
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/l_clavicle/l_shoulder/l_elbow
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/l_clavicle/l_shoulder/l_elbow/l_forearm
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/l_clavicle/l_shoulder/l_elbow/l_forearm/l_wrist
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/r_clavicle
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/r_clavicle/r_shoulder
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/r_clavicle/r_shoulder/r_elbow
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/r_clavicle/r_shoulder/r_elbow/r_forearm
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/r_clavicle/r_shoulder/r_elbow/r_forearm/r_wrist
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/spine7
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/spine7/joint1
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/spine7/joint1/joint2
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/spine7/joint1/joint3
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/spine7/joint1/joint3/joint4
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/spine7/joint1/joint3/joint4/joint5
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/spine7/joint1/joint3/joint4/joint5/joint6
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/spine7/joint1/joint3/joint4/joint5/joint6/joint7
+        weight: 1
+      - path: skeleton_GRP/root/spine1/spine2/spine3/spin4/spine5/spine6/spine7/joint1/joint3/joint4/joint5/joint6/joint7/joint8
+        weight: 1
+      - path: UB_Mesh
+        weight: 1
+      - path: UB_Trans
+        weight: 1
+      - path: UB_Trans/Boot_Left
+        weight: 1
+      - path: UB_Trans/Boot_Left/transform29
+        weight: 1
+      - path: UB_Trans/Boot_Right
+        weight: 1
+      - path: UB_Trans/Boot_Right/transform35
+        weight: 1
+      - path: UB_Trans/Hair
+        weight: 1
+      - path: UB_Trans/Hair/pCone1
+        weight: 1
+      - path: UB_Trans/Hair/pCone1/transform28
+        weight: 1
+      - path: UB_Trans/Hair/pCone2
+        weight: 1
+      - path: UB_Trans/Hair/pCone2/transform30
+        weight: 1
+      - path: UB_Trans/Hair/pCone6
+        weight: 1
+      - path: UB_Trans/Hair/pCone6/transform27
+        weight: 1
+      - path: UB_Trans/Hair/pCone7
+        weight: 1
+      - path: UB_Trans/Hair/pCone7/transform31
+        weight: 1
+      - path: UB_Trans/Hair/pTorus1
+        weight: 1
+      - path: UB_Trans/Hair/pTorus1/transform32
+        weight: 1
+      - path: UB_Trans/Hair/pTorus2
+        weight: 1
+      - path: UB_Trans/Hair/pTorus2/transform33
+        weight: 1
+      - path: UB_Trans/Hand_Left1
+        weight: 1
+      - path: UB_Trans/Hand_Left1/transform36
+        weight: 1
+      - path: UB_Trans/meshTrans
+        weight: 1
+      - path: UB_Trans/meshTrans/polySurface1131
+        weight: 1
+      - path: UB_Trans/meshTrans/polySurface1131/polySurface1136
+        weight: 1
+      - path: UB_Trans/meshTrans/polySurface1131/polySurface1136/polySurface1139
+        weight: 1
+      - path: UB_Trans/meshTrans/polySurface1131/polySurface1136/polySurface1139/transform22
+        weight: 1
+      - path: UB_Trans/meshTrans/polySurface1131/polySurface1136/polySurface1145
+        weight: 1
+      - path: UB_Trans/meshTrans/polySurface1131/polySurface1136/polySurface1145/transform21
+        weight: 1
+      - path: UB_Trans/meshTrans/polySurface1131/polySurface1136/transform15
+        weight: 1
+      - path: UB_Trans/Skin
+        weight: 1
+      - path: UB_Trans/Skin/transform24
+        weight: 1
+      - path: UB_Trans/Skin1
+        weight: 1
+      - path: UB_Trans/Skin1/transform23
+        weight: 1
+      - path: UB_Trans/Skin2
+        weight: 1
+      - path: UB_Trans/Skin2/transform34
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 180
+    normalImportMode: 1
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

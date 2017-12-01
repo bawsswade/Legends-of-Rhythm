@@ -1,0 +1,430 @@
+fileFormatVersion: 2
+guid: a23479f8175fc854f8586f426d5b59f9
+timeCreated: 1502184350
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Circle_Buttons
+    100002: Glow
+    100004: Knobs
+    100006: Left_Buttons
+    100008: Left_Pads
+    100010: Left_Scratch_Board
+    100012: Left_Scratchboard
+    100014: Left_Slider
+    100016: pCube10
+    100018: pCube11
+    100020: pCube12
+    100022: pCube13
+    100024: pCube15
+    100026: pCube16
+    100028: pCube17
+    100030: pCube2
+    100032: pCube3
+    100034: pCube4
+    100036: pCube5
+    100038: pCube6
+    100040: pCube7
+    100042: pCube8
+    100044: pCube9
+    100046: pCylinder1
+    100048: pCylinder10
+    100050: pCylinder2
+    100052: pCylinder5
+    100054: pCylinder6
+    100056: pCylinder7
+    100058: pCylinder8
+    100060: pCylinder9
+    100062: polySurface1
+    100064: polySurface1 1
+    100066: polySurface2
+    100068: polySurface2 1
+    100070: polySurface3
+    100072: polySurface3 1
+    100074: Right_Buttons
+    100076: Right_Pads
+    100078: Right_Scratch_Board
+    100080: Right_ScratchBoard
+    100082: Right_Slider
+    100084: Slider
+    100086: surface
+    100088: surface 1
+    100090: transform1
+    100092: //RootNode
+    100094: Board
+    100096: Knobs 1
+    100098: polySurface10
+    100100: polySurface11
+    100102: polySurface4
+    100104: polySurface5
+    100106: polySurface6
+    100108: polySurface7
+    100110: polySurface8
+    100112: polySurface9
+    100114: transform2
+    100116: transform3
+    100118: transform4
+    100120: transform5
+    100122: pCylinder11
+    100124: pCylinder12
+    100126: polySurface12
+    100128: polySurface13
+    100130: Left_Slider_Base
+    100132: Right_Slider_Base
+    100134: Mid_Slider_Base
+    100136: polySurface14
+    100138: polySurface15
+    400000: Circle_Buttons
+    400002: Glow
+    400004: Knobs
+    400006: Left_Buttons
+    400008: Left_Pads
+    400010: Left_Scratch_Board
+    400012: Left_Scratchboard
+    400014: Left_Slider
+    400016: pCube10
+    400018: pCube11
+    400020: pCube12
+    400022: pCube13
+    400024: pCube15
+    400026: pCube16
+    400028: pCube17
+    400030: pCube2
+    400032: pCube3
+    400034: pCube4
+    400036: pCube5
+    400038: pCube6
+    400040: pCube7
+    400042: pCube8
+    400044: pCube9
+    400046: pCylinder1
+    400048: pCylinder10
+    400050: pCylinder2
+    400052: pCylinder5
+    400054: pCylinder6
+    400056: pCylinder7
+    400058: pCylinder8
+    400060: pCylinder9
+    400062: polySurface1
+    400064: polySurface1 1
+    400066: polySurface2
+    400068: polySurface2 1
+    400070: polySurface3
+    400072: polySurface3 1
+    400074: Right_Buttons
+    400076: Right_Pads
+    400078: Right_Scratch_Board
+    400080: Right_ScratchBoard
+    400082: Right_Slider
+    400084: Slider
+    400086: surface
+    400088: surface 1
+    400090: transform1
+    400092: //RootNode
+    400094: Board
+    400096: Knobs 1
+    400098: polySurface10
+    400100: polySurface11
+    400102: polySurface4
+    400104: polySurface5
+    400106: polySurface6
+    400108: polySurface7
+    400110: polySurface8
+    400112: polySurface9
+    400114: transform2
+    400116: transform3
+    400118: transform4
+    400120: transform5
+    400122: pCylinder11
+    400124: pCylinder12
+    400126: polySurface12
+    400128: polySurface13
+    400130: Left_Slider_Base
+    400132: Right_Slider_Base
+    400134: Mid_Slider_Base
+    400136: polySurface14
+    400138: polySurface15
+    2300000: Left_Slider
+    2300002: pCube10
+    2300004: pCube11
+    2300006: pCube12
+    2300008: pCube13
+    2300010: pCube15
+    2300012: pCube16
+    2300014: pCube17
+    2300016: pCube2
+    2300018: pCube3
+    2300020: pCube4
+    2300022: pCube5
+    2300024: pCube6
+    2300026: pCube7
+    2300028: pCube8
+    2300030: pCube9
+    2300032: pCylinder1
+    2300034: pCylinder10
+    2300036: pCylinder2
+    2300038: pCylinder5
+    2300040: pCylinder6
+    2300042: pCylinder7
+    2300044: pCylinder8
+    2300046: pCylinder9
+    2300048: polySurface1
+    2300050: polySurface1 1
+    2300052: polySurface2
+    2300054: polySurface2 1
+    2300056: polySurface3
+    2300058: polySurface3 1
+    2300060: Right_Slider
+    2300062: Slider
+    2300064: surface
+    2300066: surface 1
+    2300068: //RootNode
+    2300070: Board
+    2300072: polySurface10
+    2300074: polySurface11
+    2300076: polySurface4
+    2300078: polySurface5
+    2300080: polySurface6
+    2300082: polySurface7
+    2300084: polySurface8
+    2300086: polySurface9
+    2300088: pCylinder11
+    2300090: pCylinder12
+    2300092: polySurface12
+    2300094: polySurface13
+    2300096: Left_Slider_Base
+    2300098: Right_Slider_Base
+    2300100: Mid_Slider_Base
+    2300102: polySurface14
+    2300104: polySurface15
+    3300000: Left_Slider
+    3300002: pCube10
+    3300004: pCube11
+    3300006: pCube12
+    3300008: pCube13
+    3300010: pCube15
+    3300012: pCube16
+    3300014: pCube17
+    3300016: pCube2
+    3300018: pCube3
+    3300020: pCube4
+    3300022: pCube5
+    3300024: pCube6
+    3300026: pCube7
+    3300028: pCube8
+    3300030: pCube9
+    3300032: pCylinder1
+    3300034: pCylinder10
+    3300036: pCylinder2
+    3300038: pCylinder5
+    3300040: pCylinder6
+    3300042: pCylinder7
+    3300044: pCylinder8
+    3300046: pCylinder9
+    3300048: polySurface1
+    3300050: polySurface1 1
+    3300052: polySurface2
+    3300054: polySurface2 1
+    3300056: polySurface3
+    3300058: polySurface3 1
+    3300060: Right_Slider
+    3300062: Slider
+    3300064: surface
+    3300066: surface 1
+    3300068: //RootNode
+    3300070: Board
+    3300072: polySurface10
+    3300074: polySurface11
+    3300076: polySurface4
+    3300078: polySurface5
+    3300080: polySurface6
+    3300082: polySurface7
+    3300084: polySurface8
+    3300086: polySurface9
+    3300088: pCylinder11
+    3300090: pCylinder12
+    3300092: polySurface12
+    3300094: polySurface13
+    3300096: Left_Slider_Base
+    3300098: Right_Slider_Base
+    3300100: Mid_Slider_Base
+    3300102: polySurface14
+    3300104: polySurface15
+    4300000: Turntable
+    4300002: surface
+    4300004: surface
+    4300006: pCylinder1
+    4300008: pCylinder2
+    4300010: pCylinder5
+    4300012: pCylinder6
+    4300014: pCylinder8
+    4300016: pCylinder7
+    4300018: pCylinder9
+    4300020: pCylinder10
+    4300022: pCube5
+    4300024: pCube7
+    4300026: pCube6
+    4300028: pCube4
+    4300030: pCube3
+    4300032: pCube2
+    4300034: pCube11
+    4300036: pCube12
+    4300038: pCube13
+    4300040: pCube10
+    4300042: pCube9
+    4300044: pCube8
+    4300046: Right_Slider
+    4300048: pCube17
+    4300050: Left_Slider
+    4300052: pCube15
+    4300054: Slider
+    4300056: pCube16
+    4300058: polySurface3
+    4300060: polySurface2
+    4300062: polySurface1
+    4300064: polySurface3
+    4300066: polySurface2
+    4300068: polySurface1
+    4300070: Board
+    4300072: polySurface8
+    4300074: polySurface10
+    4300076: polySurface5
+    4300078: polySurface6
+    4300080: polySurface4
+    4300082: polySurface7
+    4300084: polySurface9
+    4300086: polySurface11
+    4300088: pCylinder11
+    4300090: pCylinder12
+    4300092: polySurface12
+    4300094: polySurface13
+    4300096: Right_Slider_Base
+    4300098: Left_Slider_Base
+    4300100: polySurface14
+    4300102: polySurface15
+    4300104: Mid_Slider_Base
+    6400000: Left_Slider
+    6400002: pCube10
+    6400004: pCube11
+    6400006: pCube12
+    6400008: pCube13
+    6400010: pCube15
+    6400012: pCube16
+    6400014: pCube17
+    6400016: pCube2
+    6400018: pCube3
+    6400020: pCube4
+    6400022: pCube5
+    6400024: pCube6
+    6400026: pCube7
+    6400028: pCube8
+    6400030: pCube9
+    6400032: pCylinder1
+    6400034: pCylinder10
+    6400036: pCylinder2
+    6400038: pCylinder5
+    6400040: pCylinder6
+    6400042: pCylinder7
+    6400044: pCylinder8
+    6400046: pCylinder9
+    6400048: polySurface1
+    6400050: polySurface1 1
+    6400052: polySurface2
+    6400054: polySurface2 1
+    6400056: polySurface3
+    6400058: polySurface3 1
+    6400060: Right_Slider
+    6400062: Slider
+    6400064: surface
+    6400066: surface 1
+    6400068: //RootNode
+    6400070: Board
+    6400072: polySurface10
+    6400074: polySurface11
+    6400076: polySurface4
+    6400078: polySurface5
+    6400080: polySurface6
+    6400082: polySurface7
+    6400084: polySurface8
+    6400086: polySurface9
+    6400088: pCylinder11
+    6400090: pCylinder12
+    6400092: polySurface12
+    6400094: polySurface13
+    6400096: Left_Slider_Base
+    6400098: Right_Slider_Base
+    6400100: Mid_Slider_Base
+    6400102: polySurface14
+    6400104: polySurface15
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 250
+    meshCompression: 0
+    addColliders: 1
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
