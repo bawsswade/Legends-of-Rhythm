@@ -269,14 +269,22 @@ public class PlayerInputMediator : Mediator {
             View.specialAtk.SetActive(false);
         }
 
+<<<<<<< HEAD
         /*if (Ins.InuptManager.GetControls(INPUTTYPE.SwitchLeft))
+=======
+        if (Ins.InuptManager.GetControls(INPUTTYPE.SwitchLeft))
+>>>>>>> ae8663e27890825f99da0550b67eec12000e619c
         {
             NoteTypeSignal.Dispatch(NOTETYPE.BASS);
         }
         else if(Ins.InuptManager.GetControls(INPUTTYPE.SwitchRight))
         {
             NoteTypeSignal.Dispatch(NOTETYPE.MELODY);
+<<<<<<< HEAD
         }*/
+=======
+        }
+>>>>>>> ae8663e27890825f99da0550b67eec12000e619c
     }
 
     public void Left_NoteHit()

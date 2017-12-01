@@ -7,6 +7,7 @@ public class PlayerActionsMediator : Mediator {
 
     [Inject] public PlayerActionsView View { get; set; }
     [Inject] public OnChangeNoteType NoteChangeSignal { get; set; }
+<<<<<<< HEAD
     [Inject] public OnAttacking StopMovementSignal { get; set; }
     [Inject] public OnEnemyInRange EnemyInRangeSignal { get; set; }
 
@@ -20,16 +21,25 @@ public class PlayerActionsMediator : Mediator {
     public NOTETYPE curNoteType;
     private bool hasAttack = false;
     private IEnumerator rout;
+=======
+
+
+    public NOTETYPE curNoteType;
+>>>>>>> ae8663e27890825f99da0550b67eec12000e619c
 
 	public override void OnRegister()
     {
         NoteChangeSignal.AddListener(ChangeNoteType);
+<<<<<<< HEAD
         EnemyInRangeSignal.AddListener(SetDistanceFromEnemy);
+=======
+>>>>>>> ae8663e27890825f99da0550b67eec12000e619c
 	}
 
     private void Start()
     {
         NoteChangeSignal.Dispatch(NOTETYPE.MELODY);
+<<<<<<< HEAD
         InvokeRepeating("Beat", 60/Beatz.beatsManager.bpm, 60 / Beatz.beatsManager.bpm);
 
         rout = ResetMovement(0);
@@ -43,6 +53,8 @@ public class PlayerActionsMediator : Mediator {
     private void Beat()
     {
         hasAttack = false;
+=======
+>>>>>>> ae8663e27890825f99da0550b67eec12000e619c
     }
 
     private void Update()
@@ -50,12 +62,17 @@ public class PlayerActionsMediator : Mediator {
         if (Ins.InuptManager.GetControls(INPUTTYPE.Block) && Beatz.beatsManager.IsOnBeat())
         {
             Block();
+<<<<<<< HEAD
             //HitBeatIndicator();
+=======
+            HitBeatIndicator();
+>>>>>>> ae8663e27890825f99da0550b67eec12000e619c
         }
 
         else if (Ins.InuptManager.GetControls(INPUTTYPE.Attack) && Beatz.beatsManager.IsOnBeat(curNoteType))
         {
             SpawnAttack();
+<<<<<<< HEAD
             //HitBeatIndicator();
         }
         // move for attack
@@ -71,10 +88,20 @@ public class PlayerActionsMediator : Mediator {
                 curNoteType = (NOTETYPE)System.Enum.GetNames(typeof(NOTETYPE)).Length - 1;
             }
             SetSymbol(curNoteType, true);
+=======
+            HitBeatIndicator();
+        }
+
+        // changing beats
+        if (Ins.InuptManager.GetControls(INPUTTYPE.SwitchLeft))
+        {
+            curNoteType -= 1;
+>>>>>>> ae8663e27890825f99da0550b67eec12000e619c
             NoteChangeSignal.Dispatch(curNoteType);
         }
         else if (Ins.InuptManager.GetControls(INPUTTYPE.SwitchRight))
         {
+<<<<<<< HEAD
             SetSymbol(curNoteType, false);
             curNoteType++;
             if((int)curNoteType > System.Enum.GetNames(typeof(NOTETYPE)).Length -1)
@@ -84,10 +111,16 @@ public class PlayerActionsMediator : Mediator {
             SetSymbol(curNoteType, true);
             NoteChangeSignal.Dispatch(curNoteType);
         }*/
+=======
+            curNoteType++;
+            NoteChangeSignal.Dispatch(curNoteType);
+        }
+>>>>>>> ae8663e27890825f99da0550b67eec12000e619c
     }
 
     private void HitBeatIndicator()
     {
+<<<<<<< HEAD
         // to let player know they hit beat
         if(curNoteType == NOTETYPE.MELODY)
         {
@@ -102,6 +135,9 @@ public class PlayerActionsMediator : Mediator {
             View.snareSymbol.GetComponent<Animator>().Play("HitBeat");
         }
         //View.platformAnim.Play("HitBeat");
+=======
+        View.platformAnim.Play("HitBeat");
+>>>>>>> ae8663e27890825f99da0550b67eec12000e619c
     }
 
     private void Block()
@@ -109,6 +145,7 @@ public class PlayerActionsMediator : Mediator {
         View.shieldAnim.Play("ShieldActive");
     }
 
+<<<<<<< HEAD
     private void MoveHitDetection()
     {
         //rotate View.hitDetection game object
@@ -150,10 +187,16 @@ public class PlayerActionsMediator : Mediator {
             //transform.position += Vector3.forward * curWeapon.AttackDistance();
 
         }
+=======
+    private void SpawnAttack()
+    {
+        GameObject d = Instantiate(View.projectile, transform.position ,Quaternion.Euler(0,180,0));
+>>>>>>> ae8663e27890825f99da0550b67eec12000e619c
         //d.transform.localPosition = Vector3.zero;
         //d.transform.localRotation = Quaternion.Euler(Vector3.zero);
     }
 
+<<<<<<< HEAD
     private void SetDistanceFromEnemy(Vector3 _enemyPos)
     {
         distFromEnemy = (_enemyPos - transform.position).magnitude;
@@ -170,10 +213,13 @@ public class PlayerActionsMediator : Mediator {
         }
     }
 
+=======
+>>>>>>> ae8663e27890825f99da0550b67eec12000e619c
     private void ChangeNoteType(NOTETYPE n)
     {
         curNoteType = n;
     }
+<<<<<<< HEAD
 
     private void SetSymbol(NOTETYPE type, bool b)
     {
@@ -204,4 +250,6 @@ public class PlayerActionsMediator : Mediator {
         GameObject go =  Instantiate(g, transform.position, Quaternion.Euler(new Vector3(-90,0,0)));
         Destroy(go, 2);
     }
+=======
+>>>>>>> ae8663e27890825f99da0550b67eec12000e619c
 }

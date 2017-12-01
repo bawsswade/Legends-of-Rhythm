@@ -11,9 +11,12 @@ public class BeatIndicatorMediator : Mediator {
     private GameObject player;
     private bool isMainBeat = true;
     private NOTETYPE curNoteType;
+<<<<<<< HEAD
     public int indIndex = 0;
 
     private UnityEngine.UI.Image mel, bass, snare;
+=======
+>>>>>>> ae8663e27890825f99da0550b67eec12000e619c
 
 	public override void OnRegister()
     {
@@ -26,11 +29,14 @@ public class BeatIndicatorMediator : Mediator {
 
         float secPerBeat = 60f / Beatz.beatsManager.bpm;
         InvokeRepeating("SpawnBeat", secPerBeat, secPerBeat);
+<<<<<<< HEAD
 
         //set images
         mel = View.melodyInd.GetComponent<UnityEngine.UI.Image>();
         bass = View.bassInd.GetComponent<UnityEngine.UI.Image>();
         snare = View.snareInd.GetComponent<UnityEngine.UI.Image>();
+=======
+>>>>>>> ae8663e27890825f99da0550b67eec12000e619c
     }
 
     private void Update()
@@ -41,10 +47,23 @@ public class BeatIndicatorMediator : Mediator {
 
     private void SpawnBeat()
     {
+<<<<<<< HEAD
         //SpawnMainBeat();
         //CheckSpawnIndicator(NOTETYPE.MELODY, View.melodyIndicator, mel, View.melodyParent.transform, View.melodyHUDParent.transform);
         CheckSpawnIndicator(NOTETYPE.BASS, View.bassIndicator, bass, View.bassParent.transform, View.bassHUDParent.transform);
         CheckSpawnIndicator(NOTETYPE.SNARE, View.snareIndicator, snare, View.snareParent.transform, View.snareHUDParent.transform);
+=======
+        SpawnMainBeat();
+
+        if (curNoteType == NOTETYPE.MELODY)
+        {
+            CheckSpawnIndicator(NOTETYPE.MELODY, View.melodyIndicator, View.melodyParent);
+        }
+        else if (curNoteType == NOTETYPE.BASS)
+        {
+            CheckSpawnIndicator(NOTETYPE.BASS, View.bassIndicator, View.bassParent);
+        }
+>>>>>>> ae8663e27890825f99da0550b67eec12000e619c
     }
 
     private void SpawnMainBeat()
@@ -53,17 +72,27 @@ public class BeatIndicatorMediator : Mediator {
         {
             GameObject newBeat = Instantiate(View.beatIndicator, View.parentIndicator.transform) as GameObject;
             newBeat.transform.localPosition = new Vector3(0, -1, 0);
+<<<<<<< HEAD
             Destroy(newBeat, 3f);
         }
         //isMainBeat = !isMainBeat;
     }
     
     private void CheckSpawnIndicator(NOTETYPE type, GameObject g, UnityEngine.UI.Image i, Transform t, Transform HUDtrans)
+=======
+            Destroy(newBeat, 5f);
+        }
+        //isMainBeat = !isMainBeat;
+    }
+
+    private void CheckSpawnIndicator(NOTETYPE type, GameObject g, Transform t)
+>>>>>>> ae8663e27890825f99da0550b67eec12000e619c
     {
         if (Beatz.beatsManager.IsIndicatorOnBeat(type))
         {
             GameObject newBeat = Instantiate(g, t) as GameObject;
             newBeat.transform.localPosition = new Vector3(0, -1, 0);
+<<<<<<< HEAD
 
             // hud indicator
             /*if (type == NOTETYPE.MELODY)
@@ -88,11 +117,15 @@ public class BeatIndicatorMediator : Mediator {
             }
 
             Destroy(newBeat, 3f);
+=======
+            Destroy(newBeat, 5f);
+>>>>>>> ae8663e27890825f99da0550b67eec12000e619c
         }
     }
 
     private void ChangeNoteType(NOTETYPE n)
     {
+<<<<<<< HEAD
         DisableAllIndicators(curNoteType);
         curNoteType = n;
         EnableAllIndicators(curNoteType);
@@ -141,5 +174,8 @@ public class BeatIndicatorMediator : Mediator {
         {
             i.enabled = b;
         }
+=======
+        curNoteType = n;
+>>>>>>> ae8663e27890825f99da0550b67eec12000e619c
     }
 }

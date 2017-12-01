@@ -8,6 +8,7 @@ public class BeatIndicatorView : View {
     public GameObject beatIndicator;
     public GameObject melodyIndicator;
     public GameObject bassIndicator;
+<<<<<<< HEAD
     public GameObject snareIndicator;
     public GameObject parentIndicator;
 
@@ -25,6 +26,12 @@ public class BeatIndicatorView : View {
     public GameObject melodyHUDParent;
     public GameObject bassHUDParent;
     public GameObject snareHUDParent;
+=======
+    public GameObject parentIndicator;
+
+    public Transform melodyParent;
+    public Transform bassParent;
+>>>>>>> ae8663e27890825f99da0550b67eec12000e619c
 
     public Transform boss;
 }
