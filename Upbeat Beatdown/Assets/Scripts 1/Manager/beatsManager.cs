@@ -29,26 +29,17 @@ namespace Beatz
         }
 
         // song stuff
-<<<<<<< HEAD
         public static float hitPadding = .15f;            // deterimes how accurate you have to be
         public static float bpm = 140;
         public static float secPerBeat;
         public static int beatOffset = 4;               // num of beats pass before actual hit
-=======
-        public static float hitPadding = .14f;            // deterimes how accurate you have to be
-        public static float bpm = 140;
-        public static int beatOffset = 7;               // num of beats pass before actual hit
->>>>>>> ae8663e27890825f99da0550b67eec12000e619c
         public SongSO NoteData;
 
         static Dictionary<NOTETYPE, NoteTypeData> NoteList = new Dictionary<NOTETYPE, NoteTypeData>();
         private AudioSource audio;
         private static float offsetSeconds;
         private static float lastBeat, curBeatTime;
-<<<<<<< HEAD
         private static bool hasChecked;
-=======
->>>>>>> ae8663e27890825f99da0550b67eec12000e619c
 
         void Start()
         {
@@ -65,11 +56,7 @@ namespace Beatz
             offsetSeconds = beatOffset * (60f / bpm);
 
             // beat increments
-<<<<<<< HEAD
             secPerBeat = 60f / bpm;
-=======
-            float secPerBeat = 60f / bpm;
->>>>>>> ae8663e27890825f99da0550b67eec12000e619c
             InvokeRepeating("Beat", secPerBeat, secPerBeat);
         }
         
@@ -92,11 +79,7 @@ namespace Beatz
         // updates cur index for onBeat checks to specified notelist
         private int CheckToIncrement(List<float> noteList, int index)
         {
-<<<<<<< HEAD
             if (noteList.Count != 0 && (noteList[index]+.1f) < audio.time && index < noteList.Count - 1)
-=======
-            if (noteList.Count != 0 && noteList[index] < audio.time && index < noteList.Count - 1)
->>>>>>> ae8663e27890825f99da0550b67eec12000e619c
             {
                 return index + 1;
             }
@@ -106,11 +89,7 @@ namespace Beatz
         // for metrenome note indicators
         private int CheckToIncrementIndicator(List<float> noteList, int index)
         {
-<<<<<<< HEAD
             if (noteList.Count != 0 && (noteList[index] - offsetSeconds + .1f) < audio.time && index < noteList.Count - 1)
-=======
-            if (noteList.Count != 0 && noteList[index] - offsetSeconds < audio.time && index < noteList.Count - 1)
->>>>>>> ae8663e27890825f99da0550b67eec12000e619c
             {
                 return index + 1;
             }
@@ -137,7 +116,6 @@ namespace Beatz
         // Check if on specific beat
         public static bool IsOnBeat(NOTETYPE type)
         {
-<<<<<<< HEAD
             float nextBeat = curBeatTime + (60/bpm);
             float time = Time.fixedTime;
             
@@ -168,39 +146,11 @@ namespace Beatz
             {
                 return true;
             }
-=======
-            float nextBeat = curBeatTime + curBeatTime - lastBeat;
-            // check if current beat time is within note data time
-            if (Mathf.Abs(curBeatTime - NoteList[type].dataList[NoteList[type].curIndex]) < .1f || Mathf.Abs(nextBeat - NoteList[type].dataList[NoteList[type].curIndex]) < .1f)
-            {
-                // after beat
-                if (Time.fixedTime - curBeatTime < hitPadding)
-                {
-                    return true;
-                }
-                // before beat
-                else if (nextBeat - Time.fixedTime < hitPadding)
-                {
-                    return true;
-                }
-                else
-                {
-                    Debug.Log("after beat: " + (Time.fixedTime - curBeatTime) + "/ " + "before beat: " + (nextBeat - Time.fixedTime));
-                    return false;
-                }
-            }
-            /*if (Mathf.Abs(Time.fixedTime - NoteList[type].dataList[NoteList[type].curIndex]) < hitPadding)
-            {
-                return true;
-            }*/
-            //Debug.Log(Time.time - NoteList[type].dataList[NoteList[type].curIndex]);
->>>>>>> ae8663e27890825f99da0550b67eec12000e619c
             return false;
         }
 
         public static bool IsIndicatorOnBeat(NOTETYPE type)
         {
-<<<<<<< HEAD
             // type's note time [type index] - offset
             if (Mathf.Abs(Time.time - (NoteList[type].dataList[NoteList[type].indicatorIndex] - offsetSeconds)) < (60/bpm)/2)
             {
@@ -213,13 +163,6 @@ namespace Beatz
             }
             
             
-=======
-            if (Mathf.Abs(Time.fixedTime - (NoteList[type].dataList[NoteList[type].indicatorIndex] - offsetSeconds)) < hitPadding)
-            {
-                return true;
-            }
-            return false;
->>>>>>> ae8663e27890825f99da0550b67eec12000e619c
         }
 
         public static bool IsOnBeat(NOTETYPE type, float offset)

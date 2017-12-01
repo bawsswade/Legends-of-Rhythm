@@ -57,11 +57,7 @@ public class AOE_Line : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-<<<<<<< HEAD
         if (other.tag == "hit" || other.tag == "Player")
-=======
-        if (other.tag == "hit")
->>>>>>> ae8663e27890825f99da0550b67eec12000e619c
         {
             // if circle
             if (GetComponent<SphereCollider>())

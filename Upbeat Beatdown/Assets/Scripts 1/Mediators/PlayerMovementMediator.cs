@@ -6,7 +6,6 @@ using System;
 public class PlayerMovementMediator : Mediator {
 
     [Inject] public PlayerMovementView View { get; set; }
-<<<<<<< HEAD
     [Inject] public OnAttacking AttackingSignal { get; set; }
 
     public int speed = 15;
@@ -27,33 +26,16 @@ public class PlayerMovementMediator : Mediator {
     public override void OnRegister()
     {
         AttackingSignal.AddListener(SetAttacking);
-=======
-
-    public int speed = 100;
-    public int maxSpeed = 8;
-
-    private Rigidbody rb;
-    private float lastRot;
-
-	public override void OnRegister()
-    {
-
->>>>>>> ae8663e27890825f99da0550b67eec12000e619c
 	}
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-<<<<<<< HEAD
         motor = GetComponent<player_motor>();
-=======
-        
->>>>>>> ae8663e27890825f99da0550b67eec12000e619c
     }
 
     private void Update()
     {
-<<<<<<< HEAD
         //View.camPivot.transform.LookAt(View.lockedTarget.transform);
         //transform.LookAt(View.lockedTarget.transform);
 
@@ -113,18 +95,10 @@ public class PlayerMovementMediator : Mediator {
         yield return new WaitForSeconds(dashTimer);
         View.DashParts.SetActive(false);
         isDashing = false;
-=======
-        transform.LookAt(View.lockedTarget.transform);
-
-        ApplyForce();
-        ApplyRotation();
-        
->>>>>>> ae8663e27890825f99da0550b67eec12000e619c
     }
 
     private void ApplyForce()
     {
-<<<<<<< HEAD
         Vector3 x = transform.right * moveX * Time.deltaTime;
         Vector3 z = transform.forward * moveY * Time.deltaTime;
         Vector3 dir = (x + z).normalized * speed;
@@ -153,30 +127,11 @@ public class PlayerMovementMediator : Mediator {
         else
         {
             motor.setJump(Vector3.zero);
-=======
-        // movement: wasd
-        float v = Input.GetAxis("PS4_L_Analog_Y");
-        float h = Input.GetAxis("PS4_L_Analog_X");
-
-        Vector3 direction = new Vector3(h, 0, v);
-
-        if (v !=0|| h != 0)
-        {
-            rb.AddForce(direction * speed);
-            //rb.AddForce(transform.forward * speed);
-            //rb.AddForce(- transform.forward * (rb.velocity.magnitude - maxSpeed));
-            //rb.AddForce(-direction * (rb.velocity.magnitude - maxSpeed));
-        }
-        else
-        {
-            //rb.AddForce(transform.forward * speed);
->>>>>>> ae8663e27890825f99da0550b67eec12000e619c
         }
     }
 
     private void ApplyRotation()
     {
-<<<<<<< HEAD
         if (View.isLockedOn)
         {
             transform.LookAt(View.lockedTarget.transform);
@@ -226,25 +181,4 @@ public class PlayerMovementMediator : Mediator {
     {
 
     }
-=======
-        // movement: wasd
-        float v = Input.GetAxis("PS4_L_Analog_Y");
-        float h = Input.GetAxis("PS4_L_Analog_X");
-
-        float angle = Mathf.Atan2(h, v) * Mathf.Rad2Deg;
-
-        if (Mathf.Abs(v) > .1f || Mathf.Abs(h) > .1f)
-        {
-            transform.rotation = Quaternion.Euler(new Vector3(0, angle, 0));
-            if(v == 1 || h == 1)
-            {
-                lastRot = angle;
-            }
-        }
-        else
-        {
-            //transform.rotation = Quaternion.Euler(0, lastRot, 0);
-        }
-    }
->>>>>>> ae8663e27890825f99da0550b67eec12000e619c
 }

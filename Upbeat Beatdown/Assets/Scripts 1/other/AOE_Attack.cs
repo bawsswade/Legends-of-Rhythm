@@ -5,11 +5,7 @@ using UnityEngine;
 public class AOE_Attack : MonoBehaviour {
 
     public GameObject atkIndicator;
-<<<<<<< HEAD
     Beatz.beatsManager beatMan;
-=======
-    BeatManagerView beatMan;
->>>>>>> ae8663e27890825f99da0550b67eec12000e619c
     public GameObject particles;
     public int numIndicatorBeats;
 
@@ -18,13 +14,8 @@ public class AOE_Attack : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-<<<<<<< HEAD
         //beatMan = GameObject.FindObjectOfType<beatz.>();
         secPerBeat = 60 / 140.0f;
-=======
-        beatMan = GameObject.FindObjectOfType<BeatManagerView>();
-        secPerBeat = 60 / beatMan.bpm;
->>>>>>> ae8663e27890825f99da0550b67eec12000e619c
         secPerBeat *= numIndicatorBeats;
 
         Invoke("Burst", secPerBeat);

@@ -18,20 +18,14 @@ public partial class GameManager : StrangePackage
         //player
         mediationBinder.Bind<PlayerMovementView>().To<PlayerMovementMediator>();
         mediationBinder.Bind<PlayerActionsView>().To<PlayerActionsMediator>();
-<<<<<<< HEAD
         mediationBinder.Bind<AtkAssistView>().To<AtkAssistMediator>();
-=======
->>>>>>> ae8663e27890825f99da0550b67eec12000e619c
         mediationBinder.Bind<BeatIndicatorView>().To<BeatIndicatorMediator>();
         mediationBinder.Bind<CameraView>().To<CameraMediator>();
         mediationBinder.Bind<PlayerInputView>().To<PlayerInputMediator>();
         mediationBinder.Bind<BeatManagerView>().To<BeatManagerMediator>();
         mediationBinder.Bind<BossView>().To<BossMediator>();
-<<<<<<< HEAD
         mediationBinder.Bind<AttackView>().To<AttackMediator>();
         mediationBinder.Bind<EnvBuildView>().To<EnvBuildMediator>();
-=======
->>>>>>> ae8663e27890825f99da0550b67eec12000e619c
 
         // player signals
         commandBinder.Bind<OnLeftAttackSignal>();
@@ -42,20 +36,14 @@ public partial class GameManager : StrangePackage
         commandBinder.Bind<OnRightResetHit>();
         commandBinder.Bind<OnGainHealth>();
         commandBinder.Bind<OnChangeNoteType>();
-<<<<<<< HEAD
         commandBinder.Bind<OnAttacking>();
         commandBinder.Bind<OnEnemyInRange>();
-=======
->>>>>>> ae8663e27890825f99da0550b67eec12000e619c
         // boss signals
         commandBinder.Bind<OnBassAttackSignal>();
         commandBinder.Bind<OnMelodyAttackSignal>();
         commandBinder.Bind<OnBossTakeDamage>();
         commandBinder.Bind<OnInstantAttackSignal>();
-<<<<<<< HEAD
         
-=======
->>>>>>> ae8663e27890825f99da0550b67eec12000e619c
         //beatzzz signal
         commandBinder.Bind<OnLeftHit>();
         commandBinder.Bind<OnRightHit>();

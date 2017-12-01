@@ -27,8 +27,9 @@ public enum INPUTTYPE
     Back,
     Escape,
     Skip,
-    SwitchRight,
-    SwitchLeft,
+    BassAttack,
+    SnareAttack,
+    Jump,
 
     Dash,
     AtkRight,
@@ -55,19 +56,25 @@ namespace Ins
         private static Dictionary<INPUTTYPE, System.Func<bool>> PCControls =
             new Dictionary<INPUTTYPE, System.Func<bool>>
             {
-            { INPUTTYPE.Forward, ()=> Input.GetKey(KeyCode.W)},
-            { INPUTTYPE.Backward, ()=> Input.GetKey(KeyCode.S)},
-            { INPUTTYPE.MoveLeft, ()=> Input.GetKey(KeyCode.A)},
-            { INPUTTYPE.MoveRight, ()=> Input.GetKey(KeyCode.D)},
-            { INPUTTYPE.Up, ()=> Input.GetKeyDown(KeyCode.UpArrow)},
-            { INPUTTYPE.Down, ()=> Input.GetKeyDown(KeyCode.DownArrow)},
-            { INPUTTYPE.Right, ()=> Input.GetKeyDown(KeyCode.RightArrow)},
-            { INPUTTYPE.Left, ()=> Input.GetKeyDown(KeyCode.LeftArrow)},
+                { INPUTTYPE.Forward, ()=> Input.GetKey(KeyCode.W)},
+                { INPUTTYPE.Backward, ()=> Input.GetKey(KeyCode.S)},
+                { INPUTTYPE.MoveLeft, ()=> Input.GetKey(KeyCode.A)},
+                { INPUTTYPE.MoveRight, ()=> Input.GetKey(KeyCode.D)},
+                { INPUTTYPE.Up, ()=> Input.GetKeyDown(KeyCode.UpArrow)},
+                { INPUTTYPE.Down, ()=> Input.GetKeyDown(KeyCode.DownArrow)},
+                { INPUTTYPE.Right, ()=> Input.GetKeyDown(KeyCode.RightArrow)},
+                { INPUTTYPE.Left, ()=> Input.GetKeyDown(KeyCode.LeftArrow)},
+                { INPUTTYPE.Back, ()=> Input.GetMouseButtonDown(1)},
+                { INPUTTYPE.Escape, ()=> Input.GetKeyDown(KeyCode.Escape)},
+                { INPUTTYPE.Skip, ()=> Input.GetKeyDown(KeyCode.Space)},
 
-            
-            { INPUTTYPE.Back, ()=> Input.GetMouseButtonDown(1)},
-            { INPUTTYPE.Escape, ()=> Input.GetKeyDown(KeyCode.Escape)},
-            { INPUTTYPE.Skip, ()=> Input.GetKeyDown(KeyCode.Space)}
+                { INPUTTYPE.Attack, () => Input.GetMouseButtonDown(0)},
+                { INPUTTYPE.Block, () => Input.GetMouseButtonDown(1)},
+                { INPUTTYPE.SpecialAtk, () => Input.GetKeyDown(KeyCode.LeftShift)},
+                { INPUTTYPE.Dash, ()=> CheckDash(()=>Input.GetAxis("PS4_L_Analog_X"), ()=>Input.GetAxis("PS4_L_Analog_Y"), ()=>Input.GetAxis("PS4_R_Analog_X"), ()=>Input.GetAxis("PS4_R_Analog_Y"))},
+                { INPUTTYPE.BassAttack, () => Input.GetKeyDown(KeyCode.Q)},
+                { INPUTTYPE.SnareAttack, () => Input.GetKeyDown(KeyCode.E)},
+                { INPUTTYPE.LockOn, () => Input.GetKeyDown(KeyCode.Space)}    
             };
         private static Dictionary<INPUTTYPE, System.Func<float>> PCAxis =
             new Dictionary<INPUTTYPE, System.Func<float>>
@@ -111,12 +118,14 @@ namespace Ins
                 { INPUTTYPE.Down, () =>CheckFirstFrame(() => Input.GetAxis("PS4_Dpad_Y"), INPUTTYPE.Down, false)},
                 { INPUTTYPE.Escape, ()=> Input.GetButtonDown("PS4_Options")},
                 { INPUTTYPE.Skip, ()=> CheckFirstFrame(() => Input.GetButtonDown("PS4_Button_Square"), INPUTTYPE.Skip)},
-                { INPUTTYPE.Attack, () => Input.GetButtonDown("PS4_X")},
+                //{ INPUTTYPE.Attack, () => Input.GetButtonDown("PS4_X")},
                 { INPUTTYPE.Block, () => Input.GetButtonDown("PS4_Square")},
                 { INPUTTYPE.SpecialAtk, () => MultAxisToBool(() => Input.GetAxis("PS4_L_Trigger"), () => Input.GetAxis("PS4_R_Trigger"))},    // positive
-                { INPUTTYPE.Dash, ()=> CheckDash(()=>Input.GetAxis("PS4_L_Analog_X"), ()=>Input.GetAxis("PS4_L_Analog_Y"), ()=>Input.GetAxis("PS4_R_Analog_X"), ()=>Input.GetAxis("PS4_R_Analog_Y"))},
-                { INPUTTYPE.SwitchLeft, () => Input.GetButtonDown("PS4_L1")},
-                { INPUTTYPE.SwitchRight, () => Input.GetButtonDown("PS4_R1")}
+                { INPUTTYPE.Dash, ()=> Input.GetButtonDown("PS4_Square")},
+                { INPUTTYPE.BassAttack, () => Input.GetButtonDown("PS4_L1")},
+                { INPUTTYPE.SnareAttack, () => Input.GetButtonDown("PS4_R1")},
+                { INPUTTYPE.LockOn, () => Input.GetButtonDown("PS4_R3")},
+                { INPUTTYPE.Jump, () => Input.GetButtonDown("PS4_X")},
             };
         private static Dictionary<INPUTTYPE, System.Func<float>> PS4Axis =
             new Dictionary<INPUTTYPE, System.Func<float>>
@@ -449,14 +458,6 @@ namespace Ins
                 g.SetActive(false);
             }
         }
-
-        private void Update()
-        {
-            if(currentControls != CONTROLTYPE.KEYBOARD)
-            {
-                //Cursor.visible = false;
-                //Cursor.lockState = CursorLockMode.Locked;
-            }
-        }
+        
     }
 }
