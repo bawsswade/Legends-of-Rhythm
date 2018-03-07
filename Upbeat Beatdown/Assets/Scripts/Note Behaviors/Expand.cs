@@ -9,13 +9,13 @@ public class Expand : MonoBehaviour {
     public float rate;
 
     public int beatLifetime;
-    private SongManager sm;
+    //private SongManager sm;
     private int count = 0;
 
     private void Start()
     {
-        sm = FindObjectOfType<SongManager>();
-        InvokeRepeating("Increment", 0, 60f/sm.bpm);
+        //sm = FindObjectOfType<SongManager>();
+        InvokeRepeating("Increment", 0, 60f/SongManager.bpm);
         if(isRandom)
         {
             rate = Random.Range(0,1);

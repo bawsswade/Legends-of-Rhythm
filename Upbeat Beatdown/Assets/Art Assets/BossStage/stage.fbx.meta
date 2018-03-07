@@ -1,0 +1,388 @@
+fileFormatVersion: 2
+guid: 8e5aa49a87f853a4cbca0fd5ccd0cb3f
+timeCreated: 1516415101
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: boards
+    100002: group1
+    100004: group2
+    100006: group3
+    100008: group4
+    100010: group5
+    100012: light_Board
+    100014: pCube10
+    100016: pCube11
+    100018: pCube12
+    100020: pCube13
+    100022: pCube14
+    100024: pCube3
+    100026: pCube4
+    100028: pCube5
+    100030: pCube6
+    100032: pCube7
+    100034: pCube8
+    100036: pCube9
+    100038: pCylinder1
+    100040: pCylinder2
+    100042: pCylinder3
+    100044: pCylinder4
+    100046: pCylinder5
+    100048: pCylinder6
+    100050: pCylinder7
+    100052: pCylinder8
+    100054: pCylinder9
+    100056: polySurface1
+    100058: polySurface2
+    100060: pPyramid1
+    100062: pSphere18
+    100064: pSphere18 1
+    100066: pSphere18 2
+    100068: pSphere18 3
+    100070: pSphere18 4
+    100072: pSphere19
+    100074: pSphere19 1
+    100076: pSphere19 2
+    100078: pSphere19 3
+    100080: pSphere19 4
+    100082: pSphere20
+    100084: pSphere20 1
+    100086: pSphere20 2
+    100088: pSphere20 3
+    100090: pSphere20 4
+    100092: pTorus18
+    100094: pTorus18 1
+    100096: pTorus18 2
+    100098: pTorus18 3
+    100100: pTorus18 4
+    100102: pTorus19
+    100104: pTorus19 1
+    100106: pTorus19 2
+    100108: pTorus19 3
+    100110: pTorus19 4
+    100112: pTorus20
+    100114: pTorus20 1
+    100116: pTorus20 2
+    100118: pTorus20 3
+    100120: pTorus20 4
+    100122: Speakers
+    100124: //RootNode
+    100126: top1
+    100128: transform1
+    400000: boards
+    400002: group1
+    400004: group2
+    400006: group3
+    400008: group4
+    400010: group5
+    400012: light_Board
+    400014: pCube10
+    400016: pCube11
+    400018: pCube12
+    400020: pCube13
+    400022: pCube14
+    400024: pCube3
+    400026: pCube4
+    400028: pCube5
+    400030: pCube6
+    400032: pCube7
+    400034: pCube8
+    400036: pCube9
+    400038: pCylinder1
+    400040: pCylinder2
+    400042: pCylinder3
+    400044: pCylinder4
+    400046: pCylinder5
+    400048: pCylinder6
+    400050: pCylinder7
+    400052: pCylinder8
+    400054: pCylinder9
+    400056: polySurface1
+    400058: polySurface2
+    400060: pPyramid1
+    400062: pSphere18
+    400064: pSphere18 1
+    400066: pSphere18 2
+    400068: pSphere18 3
+    400070: pSphere18 4
+    400072: pSphere19
+    400074: pSphere19 1
+    400076: pSphere19 2
+    400078: pSphere19 3
+    400080: pSphere19 4
+    400082: pSphere20
+    400084: pSphere20 1
+    400086: pSphere20 2
+    400088: pSphere20 3
+    400090: pSphere20 4
+    400092: pTorus18
+    400094: pTorus18 1
+    400096: pTorus18 2
+    400098: pTorus18 3
+    400100: pTorus18 4
+    400102: pTorus19
+    400104: pTorus19 1
+    400106: pTorus19 2
+    400108: pTorus19 3
+    400110: pTorus19 4
+    400112: pTorus20
+    400114: pTorus20 1
+    400116: pTorus20 2
+    400118: pTorus20 3
+    400120: pTorus20 4
+    400122: Speakers
+    400124: //RootNode
+    400126: top1
+    400128: transform1
+    2300000: light_Board
+    2300002: pCube10
+    2300004: pCube11
+    2300006: pCube12
+    2300008: pCube13
+    2300010: pCube14
+    2300012: pCube3
+    2300014: pCube4
+    2300016: pCube5
+    2300018: pCube6
+    2300020: pCube7
+    2300022: pCube8
+    2300024: pCube9
+    2300026: pCylinder1
+    2300028: pCylinder2
+    2300030: pCylinder3
+    2300032: pCylinder4
+    2300034: pCylinder5
+    2300036: pCylinder6
+    2300038: pCylinder7
+    2300040: pCylinder8
+    2300042: pCylinder9
+    2300044: polySurface1
+    2300046: polySurface2
+    2300048: pSphere18
+    2300050: pSphere18 1
+    2300052: pSphere18 2
+    2300054: pSphere18 3
+    2300056: pSphere18 4
+    2300058: pSphere19
+    2300060: pSphere19 1
+    2300062: pSphere19 2
+    2300064: pSphere19 3
+    2300066: pSphere19 4
+    2300068: pSphere20
+    2300070: pSphere20 1
+    2300072: pSphere20 2
+    2300074: pSphere20 3
+    2300076: pSphere20 4
+    2300078: pTorus18
+    2300080: pTorus18 1
+    2300082: pTorus18 2
+    2300084: pTorus18 3
+    2300086: pTorus18 4
+    2300088: pTorus19
+    2300090: pTorus19 1
+    2300092: pTorus19 2
+    2300094: pTorus19 3
+    2300096: pTorus19 4
+    2300098: pTorus20
+    2300100: pTorus20 1
+    2300102: pTorus20 2
+    2300104: pTorus20 3
+    2300106: pTorus20 4
+    3300000: light_Board
+    3300002: pCube10
+    3300004: pCube11
+    3300006: pCube12
+    3300008: pCube13
+    3300010: pCube14
+    3300012: pCube3
+    3300014: pCube4
+    3300016: pCube5
+    3300018: pCube6
+    3300020: pCube7
+    3300022: pCube8
+    3300024: pCube9
+    3300026: pCylinder1
+    3300028: pCylinder2
+    3300030: pCylinder3
+    3300032: pCylinder4
+    3300034: pCylinder5
+    3300036: pCylinder6
+    3300038: pCylinder7
+    3300040: pCylinder8
+    3300042: pCylinder9
+    3300044: polySurface1
+    3300046: polySurface2
+    3300048: pSphere18
+    3300050: pSphere18 1
+    3300052: pSphere18 2
+    3300054: pSphere18 3
+    3300056: pSphere18 4
+    3300058: pSphere19
+    3300060: pSphere19 1
+    3300062: pSphere19 2
+    3300064: pSphere19 3
+    3300066: pSphere19 4
+    3300068: pSphere20
+    3300070: pSphere20 1
+    3300072: pSphere20 2
+    3300074: pSphere20 3
+    3300076: pSphere20 4
+    3300078: pTorus18
+    3300080: pTorus18 1
+    3300082: pTorus18 2
+    3300084: pTorus18 3
+    3300086: pTorus18 4
+    3300088: pTorus19
+    3300090: pTorus19 1
+    3300092: pTorus19 2
+    3300094: pTorus19 3
+    3300096: pTorus19 4
+    3300098: pTorus20
+    3300100: pTorus20 1
+    3300102: pTorus20 2
+    3300104: pTorus20 3
+    3300106: pTorus20 4
+    4300000: polySurface2
+    4300002: pTorus18
+    4300004: pSphere18
+    4300006: pSphere19
+    4300008: pTorus19
+    4300010: pSphere20
+    4300012: pTorus20
+    4300014: pTorus18
+    4300016: pSphere18
+    4300018: pSphere19
+    4300020: pTorus19
+    4300022: pSphere20
+    4300024: pTorus20
+    4300026: pTorus18
+    4300028: pSphere18
+    4300030: pSphere19
+    4300032: pTorus19
+    4300034: pSphere20
+    4300036: pTorus20
+    4300038: pTorus18
+    4300040: pSphere18
+    4300042: pSphere19
+    4300044: pTorus19
+    4300046: pSphere20
+    4300048: pTorus20
+    4300050: pTorus18
+    4300052: pSphere18
+    4300054: pSphere19
+    4300056: pTorus19
+    4300058: pSphere20
+    4300060: pTorus20
+    4300062: polySurface1
+    4300064: pCylinder1
+    4300066: light_Board
+    4300068: pCylinder2
+    4300070: pCylinder3
+    4300072: pCylinder4
+    4300074: pCylinder5
+    4300076: pCylinder6
+    4300078: pCylinder7
+    4300080: pCylinder8
+    4300082: pCylinder9
+    4300084: pCube3
+    4300086: pCube4
+    4300088: pCube5
+    4300090: pCube6
+    4300092: pCube7
+    4300094: pCube8
+    4300096: pCube11
+    4300098: pCube12
+    4300100: pCube13
+    4300102: pCube14
+    4300104: pCube9
+    4300106: pCube10
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: f39a7f4f153c56646b8f6fef6318afed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: a4003400a60e1ca4bb11f069be13dc38, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 50
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

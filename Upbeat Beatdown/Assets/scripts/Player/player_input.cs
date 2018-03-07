@@ -9,17 +9,24 @@ public class player_input : MonoBehaviour {
     #region Variables
     public Animator anim;
 
-    public GameObject DashParts;
+    //public GameObject DashParts;
+    //public Material onBeatMaterial;
+    //private Material startMaterial;
     
-    private bool isDashing = false;
+    public bool isDashing = false;
     private bool isJumping = false;
 
     private player_motor motor;
+    private player_abilities abilites;
+    private bool shouldMove = true;
 
     private SongManager sm;
+    private AudioSource source;
+
+    private bool inNoteSync = false;
 
     // Action calls
-    public Action<INPUTTYPE, bool> OnDash;
+    public Action<INPUTTYPE> OnDash;
     #endregion
 
     private void Start()
@@ -28,29 +35,45 @@ public class player_input : MonoBehaviour {
         
         motor = GetComponent<player_motor>();
         sm = GameObject.FindObjectOfType<Beatz.SongManager>();
+        abilites = GetComponent<player_abilities>();
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
+        //audio
+        source = GetComponent<AudioSource>();
+
         // Actions
+        abilites.OnEnterNoteSync += FreezeMovement;
+        abilites.OnExitNoteSync += AllowMovement;
         OnDash += Dash;
     }
 
     private void Update()
     {
-        if (Ins.InuptManager.GetControls(INPUTTYPE.Atk1) && !isDashing)
+        // check for dash hits (constant beat)
+        if(!inNoteSync)
         {
-            OnDash(INPUTTYPE.Atk1, sm.GetIsOnBeat());
-            //motor.Dash(INPUTTYPE.Atk1, sm.GetIsOnBeat());
-            //Dash(INPUTTYPE.Atk1);
+            DashInputs();
         }
-        else if (Ins.InuptManager.GetControls(INPUTTYPE.Atk2) && !isDashing)
+        // check for specific note hits
+        else
         {
-            OnDash(INPUTTYPE.Atk2, sm.GetIsOnBeat());
-            //motor.Dash(INPUTTYPE.Atk2, sm.GetIsOnBeat());
-            //Dash(INPUTTYPE.Atk2);
+            NoteHitInputs();
         }
-        
+    }
+
+    private void DashInputs()
+    {
+        if (Ins.InuptManager.GetControls(INPUTTYPE.Atk1) && !isDashing && shouldMove && sm.GetIsOnBeat())
+        {
+            OnDash(INPUTTYPE.Atk1);
+        }
+        else if (Ins.InuptManager.GetControls(INPUTTYPE.Atk2) && !isDashing && shouldMove && sm.GetIsOnBeat())
+        {
+            OnDash(INPUTTYPE.Atk2);
+        }
+
         if (Ins.InuptManager.GetControls(INPUTTYPE.LockOn))
         {
             //isLockedOn = !isLockedOn;
@@ -59,18 +82,24 @@ public class player_input : MonoBehaviour {
         SetAnimation();
     }
 
-    private void Dash(INPUTTYPE type, bool isOnBeat)
+    private void NoteHitInputs()
+    {
+        if (Ins.InuptManager.GetControls(INPUTTYPE.Atk1) && sm.GetHasHitNote(NoteType.TLeft))
+        {
+            source.Play();
+            //Debug.Log("Hit left");
+        }
+        else if (Ins.InuptManager.GetControls(INPUTTYPE.Atk2) && sm.GetHasHitNote(NoteType.TRgiht))
+        {
+            source.Play();
+            //Debug.Log("Hit right");
+        }
+    }
+
+    private void Dash(INPUTTYPE type)
     {
         isDashing = true;
         anim.SetTrigger("isDashing");
-
-        //set parts
-        DashParts.SetActive(true);
-        var ps = DashParts.GetComponent<ParticleSystem>().main;
-        Color temp = type == INPUTTYPE.Atk1 ? Color.red : Color.blue;
-        temp.a = .15f;
-        ps.startColor = temp;
-
         // get direction to dash
         //Vector3 x = transform.right * moveX * Time.deltaTime;
         //Vector3 z = transform.forward * moveY * Time.deltaTime;
@@ -82,8 +111,7 @@ public class player_input : MonoBehaviour {
 
     IEnumerator WaitForEndDash()
     {
-        yield return new WaitForSeconds(motor.dashTimer);
-        DashParts.SetActive(false);
+        yield return new WaitForSeconds(motor.dashTimer - sm.hitPadding);
         isDashing = false;
     }
 
@@ -111,5 +139,17 @@ public class player_input : MonoBehaviour {
         {
             //motor.setJump(Vector3.zero);
         }
+    }
+
+    private void FreezeMovement()
+    {
+        shouldMove = false;
+        inNoteSync = true;
+    }
+
+    private void AllowMovement()
+    {
+        shouldMove = true;
+        inNoteSync = false;
     }
 }

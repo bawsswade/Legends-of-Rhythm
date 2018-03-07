@@ -1,0 +1,312 @@
+fileFormatVersion: 2
+guid: 5035fb2c75c9135488280ac95fdaf715
+timeCreated: 1515314000
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Boot_Left
+    100004: Boot_Right
+    100006: Hair
+    100008: Hand_Left1
+    100010: joint1
+    100012: joint2
+    100014: joint3
+    100016: joint4
+    100018: joint5
+    100020: joint6
+    100022: joint7
+    100024: joint8
+    100026: l_ankle
+    100028: l_ball
+    100030: l_clavicle
+    100032: l_elbow
+    100034: l_forearm
+    100036: l_knee
+    100038: l_shoulder
+    100040: l_thigh
+    100042: l_toe
+    100044: l_wrist
+    100046: meshTrans
+    100048: pCone1
+    100050: pCone2
+    100052: pCone6
+    100054: pCone7
+    100056: polySurface1131
+    100058: polySurface1136
+    100060: polySurface1139
+    100062: polySurface1145
+    100064: pTorus1
+    100066: pTorus2
+    100068: r_ankle
+    100070: r_ball
+    100072: r_clavicle
+    100074: r_elbow
+    100076: r_forearm
+    100078: r_knee
+    100080: r_shoulder
+    100082: r_thigh
+    100084: r_toe
+    100086: r_wrist
+    100088: root
+    100090: skeleton_GRP
+    100092: Skin
+    100094: Skin1
+    100096: Skin2
+    100098: spin4
+    100100: spine1
+    100102: spine2
+    100104: spine3
+    100106: spine5
+    100108: spine6
+    100110: spine7
+    100112: transform15
+    100114: transform21
+    100116: transform22
+    100118: transform23
+    100120: transform24
+    100122: transform27
+    100124: transform28
+    100126: transform29
+    100128: transform30
+    100130: transform31
+    100132: transform32
+    100134: transform33
+    100136: transform34
+    100138: transform35
+    100140: transform36
+    100142: UB_Mesh
+    100144: UB_Trans
+    400000: //RootNode
+    400002: Boot_Left
+    400004: Boot_Right
+    400006: Hair
+    400008: Hand_Left1
+    400010: joint1
+    400012: joint2
+    400014: joint3
+    400016: joint4
+    400018: joint5
+    400020: joint6
+    400022: joint7
+    400024: joint8
+    400026: l_ankle
+    400028: l_ball
+    400030: l_clavicle
+    400032: l_elbow
+    400034: l_forearm
+    400036: l_knee
+    400038: l_shoulder
+    400040: l_thigh
+    400042: l_toe
+    400044: l_wrist
+    400046: meshTrans
+    400048: pCone1
+    400050: pCone2
+    400052: pCone6
+    400054: pCone7
+    400056: polySurface1131
+    400058: polySurface1136
+    400060: polySurface1139
+    400062: polySurface1145
+    400064: pTorus1
+    400066: pTorus2
+    400068: r_ankle
+    400070: r_ball
+    400072: r_clavicle
+    400074: r_elbow
+    400076: r_forearm
+    400078: r_knee
+    400080: r_shoulder
+    400082: r_thigh
+    400084: r_toe
+    400086: r_wrist
+    400088: root
+    400090: skeleton_GRP
+    400092: Skin
+    400094: Skin1
+    400096: Skin2
+    400098: spin4
+    400100: spine1
+    400102: spine2
+    400104: spine3
+    400106: spine5
+    400108: spine6
+    400110: spine7
+    400112: transform15
+    400114: transform21
+    400116: transform22
+    400118: transform23
+    400120: transform24
+    400122: transform27
+    400124: transform28
+    400126: transform29
+    400128: transform30
+    400130: transform31
+    400132: transform32
+    400134: transform33
+    400136: transform34
+    400138: transform35
+    400140: transform36
+    400142: UB_Mesh
+    400144: UB_Trans
+    4300000: UB_Mesh
+    7400000: floating
+    7400002: dash
+    9500000: //RootNode
+    13700000: UB_Mesh
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hair
+    second: {fileID: 2100000, guid: c446ca945dd22224aaf88406d0ec696d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shirt
+    second: {fileID: 2100000, guid: 7429a8108a5e24d4f88718f68386faf9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shoes
+    second: {fileID: 2100000, guid: f5e65d12d46201f4d8c3b1aff0c59aa1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: skin
+    second: {fileID: 2100000, guid: cfca503cc7389c945904cdf99f515172, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: floating
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: dash
+      takeName: Take 001
+      firstFrame: 60
+      lastFrame: 116
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

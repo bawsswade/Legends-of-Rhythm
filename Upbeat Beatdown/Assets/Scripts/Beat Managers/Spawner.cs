@@ -19,7 +19,7 @@ public class Spawner : MonoBehaviour {
 
     private void StartGame()
     {
-        InvokeRepeating("Increment", 0, 60f / sm.bpm);
+        InvokeRepeating("Increment", 0, 60f / SongManager.bpm);
         //Debug.Log("starting spawner");
     }
 

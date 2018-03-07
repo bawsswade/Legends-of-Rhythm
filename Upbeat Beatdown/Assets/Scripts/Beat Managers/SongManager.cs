@@ -11,7 +11,7 @@ namespace Beatz
 {
     public class SongManager : MonoBehaviour
     {
-        public int bpm;
+        public static int bpm = 140;
         public SongSO songData;
         public Action OnStartGame;      // used to sync all classes reliant on beat
 
@@ -27,7 +27,7 @@ namespace Beatz
         private static float songTime = 0;     // used for getting song time on beat
 
         // the leniency of hits
-        private float hitPadding = .18f;
+        public float hitPadding = .1f;
 
         private void Start()
         {
@@ -93,11 +93,14 @@ namespace Beatz
             // increment player checks
             if ((playerIndex < PlayerNotes.Count && song.time > PlayerNotes[playerIndex].time) || PlayerNotes[playerIndex].hasHitNote)
             {
-                playerIndex++;
+                if (playerIndex < PlayerNotes.Count)
+                {
+                    playerIndex++;
+                }
             }
 
             // increment boss checks
-            if (enemyIndex < EnemyNotes.Count && song.time > EnemyNotes[enemyIndex].time)
+            if (enemyIndex < PlayerNotes.Count && song.time > PlayerNotes[enemyIndex].time)
             {
                 enemyIndex++;
             }
@@ -111,11 +114,11 @@ namespace Beatz
         public bool GetHasHitNote(NoteType noteType)
         {
             // check song.time to current beats time
-            if (Mathf.Abs(song.time - PlayerNotes[playerIndex].time) < (hitPadding) && PlayerNotes[playerIndex].noteType.Contains(noteType))
+            if (Mathf.Abs(song.time - PlayerNotes[enemyIndex].time) < (hitPadding) && PlayerNotes[enemyIndex].noteType.Contains(noteType))
             {
                 return true;
             }
-            Debug.Log(song.time + " - " + PlayerNotes[playerIndex].time + " = " + (song.time - PlayerNotes[playerIndex].time));
+            //Debug.Log(song.time + " - " + PlayerNotes[enemyIndex].time + " = " + (song.time - PlayerNotes[playerIndex].time));
             return false;
         }
 

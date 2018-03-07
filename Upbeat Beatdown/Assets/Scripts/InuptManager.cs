@@ -68,14 +68,16 @@ namespace Ins
                 { INPUTTYPE.Escape, ()=> Input.GetKeyDown(KeyCode.Escape)},
                 //{ INPUTTYPE.Skip, ()=> Input.GetKeyDown(KeyCode.Space)},
 
-                { INPUTTYPE.Attack, () => Input.GetMouseButtonDown(0)},
+                //{ INPUTTYPE.Attack, () => Input.GetMouseButtonDown(0)},
                 { INPUTTYPE.Block, () => Input.GetMouseButtonDown(1)},
                 { INPUTTYPE.SpecialAtk, () => Input.GetKeyDown(KeyCode.LeftShift)},
                 { INPUTTYPE.Dash, ()=> Input.GetMouseButtonDown(0)},
                 { INPUTTYPE.BassAttack, () => Input.GetKeyDown(KeyCode.Q)},
                 { INPUTTYPE.SnareAttack, () => Input.GetKeyDown(KeyCode.E)},
                 { INPUTTYPE.LockOn, () => Input.GetKeyDown(KeyCode.LeftShift)},
-                { INPUTTYPE.Jump, () => Input.GetKeyDown(KeyCode.Space)}
+                { INPUTTYPE.Jump, () => Input.GetKeyDown(KeyCode.Space)},
+                { INPUTTYPE.Atk1, () => Input.GetMouseButtonDown(0)},
+                { INPUTTYPE.Atk2, () => Input.GetMouseButtonDown(1)},
             };
         private static Dictionary<INPUTTYPE, System.Func<float>> PCAxis =
             new Dictionary<INPUTTYPE, System.Func<float>>

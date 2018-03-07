@@ -1,41 +1,51 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Beatz;
 
 public class player_motor : MonoBehaviour {
     #region Variables
     public int moveSpeed = 15;
-    public int sensitivity;
+    public float sensitivity;
     public GameObject model;
     public GameObject camPivot;
     public GameObject camera;
     public bool isLockedOn;
+    public Transform lockedTarget;
 
     public bool isMoving = false;
-    public bool isDashing = false;
+    //public bool isDashing;
     private bool isJumping;
     private Rigidbody rb;
     private float lastRot;
     private float lookX, lookY, moveX, moveY;
     public float dashTimer;
-    public float dashSpeed = 1;
+    public float dashSpeed;
+    private float curDashSpeed;
     private Beatz.SongManager sm;
     private player_input input;
+    private player_abilities abilites;
+    private bool inNoteSync = false;
     #endregion
 
     private void Start()
     {
-        Ins.InuptManager.currentControls = CONTROLTYPE.PS4;
+        //Ins.InuptManager.currentControls = CONTROLTYPE.KEYBOARD;
         rb = GetComponent<Rigidbody>();
         input = GetComponent<player_input>();
 
         sm = GameObject.FindObjectOfType<Beatz.SongManager>();
-        dashTimer = (60f / sm.bpm) - .1f;
+        dashTimer = (60f / SongManager.bpm);
+        //isDashing = false;
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
+        abilites = GetComponent<player_abilities>();
+
         // add to input Actions
         input.OnDash += Dash;
+        abilites.OnEnterNoteSync += FreezeMovement;
+        abilites.OnExitNoteSync += AllowMovement;
     }
 
     private void Update()
@@ -47,28 +57,28 @@ public class player_motor : MonoBehaviour {
 
         // moving
         ApplyRotation();
-        
-        if (!isDashing)
+
+        if (!input.isDashing && !inNoteSync)
         {
             ApplyForce();
         }
+
     }
 
-    public void Dash(INPUTTYPE type, bool isOnBeat)
+    public void Dash(INPUTTYPE type)
     {
         // get direction to dash
-        Vector3 x = transform.right * moveX * Time.deltaTime;
-        Vector3 z = transform.forward * moveY * Time.deltaTime;
+        Vector3 x = camera.transform.right * moveX * Time.deltaTime;
+        Vector3 z = camera.transform.forward * moveY * Time.deltaTime;
         Vector3 y = camera.transform.forward * Time.deltaTime;
-        Debug.Log(moveY);
         if(moveY < 0)
         {
             y = -y;
         }
         Vector3 dir = (x + z + y).normalized;
 
-        isDashing = true;
-        dashSpeed = isOnBeat ? 1 : .5f;
+        curDashSpeed = dashSpeed;
+        //curDashSpeed = isOnBeat ? dashSpeed : dashSpeed/2;
         StartCoroutine(StartDashTimer(dir, rb.velocity));
     }
 
@@ -80,12 +90,18 @@ public class player_motor : MonoBehaviour {
         while (count < dashTimer)
         {
             //transform.position += (_x + _z) * 30;
-            r.velocity += (_dir * dashSpeed);
+            r.velocity += (_dir * curDashSpeed);
             //r.AddForce((_x + _z) * 30);
             count += Time.deltaTime;
+
+            // enable dashing when range of next hitPadding
+            /*if (count > dashTimer - sm.hitPadding)
+            {
+                isDashing = false;
+            }*/
         }
-        yield return new WaitForSeconds(dashTimer);
-        isDashing = false;
+        yield return new WaitForSeconds(dashTimer - sm.hitPadding);
+        //isDashing = false;
         rb.velocity = startVelocity;
     }
 
@@ -125,7 +141,7 @@ public class player_motor : MonoBehaviour {
     {
         if (isLockedOn)
         {
-            //transform.LookAt(lockedTarget.transform);
+            transform.LookAt(lockedTarget);
             //model.transform.LookAt(lockedTarget.transform);
         }
         else
@@ -150,5 +166,17 @@ public class player_motor : MonoBehaviour {
             }
         }
 
+    }
+
+    private void FreezeMovement()
+    {
+        inNoteSync = true;
+        isLockedOn = true;
+    }
+
+    private void AllowMovement()
+    {
+        inNoteSync = false;
+        isLockedOn = false;
     }
 }
