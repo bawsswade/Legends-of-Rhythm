@@ -91,9 +91,9 @@ namespace Invector.CharacterController
 
         protected virtual void MoveCharacter()
         {
-			//cc.input.x = Input.GetAxis(horizontalInput);
-			cc.input.y = 1;
-            //cc.input.y = Input.GetAxis(verticallInput);
+			cc.input.x = Input.GetAxis(horizontalInput);
+			//cc.input.y = 1;
+            cc.input.y = Input.GetAxis(verticallInput);
         }
 
         protected virtual void StrafeInput()
@@ -104,11 +104,11 @@ namespace Invector.CharacterController
 
         protected virtual void SprintInput()
         {
-			cc.Sprint(true);
-			/*if (Input.GetKeyDown(sprintInput))
+			//cc.Sprint(true);
+			if (Input.GetKeyDown(sprintInput))
                 cc.Sprint(true);
             else if(Input.GetKeyUp(sprintInput))
-                cc.Sprint(false);*/
+                cc.Sprint(false);
         }
 
         protected virtual void JumpInput()
